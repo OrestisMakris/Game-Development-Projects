@@ -8,7 +8,7 @@ public class ReactiveTarget : MonoBehaviour
 
     public void ReactToHit()
     {
-        WanderingAI behavior = GetComponent<WanderingAI>();
+        EnemyAI behavior = GetComponent<EnemyAI>();
         if (behavior != null)
         {
             behavior.SetAlive(false);

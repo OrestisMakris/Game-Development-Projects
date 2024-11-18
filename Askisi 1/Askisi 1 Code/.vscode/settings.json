@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Askisi 1.sln"
+    "dotnet.defaultSolution": "Askisi 1 Code.sln"
 }
