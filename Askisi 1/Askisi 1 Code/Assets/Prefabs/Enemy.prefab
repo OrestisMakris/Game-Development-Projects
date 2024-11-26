@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1912301761224445753}
   - component: {fileID: 289611158194171924}
   - component: {fileID: 835423183308294264}
+  - component: {fileID: 2345952385628235343}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -132,5 +133,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  obstacleRange: 5
+  rotSpeed: 100
+  obstacleRange: 2
+  aiFieldOfViewAngle: 60
+  aiSightRange: 20
   fireballPrefab: {fileID: 1284065075769622593, guid: e48d0c3e345dc954fb88431ecb092ea4, type: 3}
+--- !u!114 &2345952385628235343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892410892991233353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ab0e317e9904d319323f745d496f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  rotSpeed: 100
+  obstacleRange: 2
+  aiFieldOfViewAngle: 60
+  aiSightRange: 20
+  fireballPrefab: {fileID: 0}
+  mat: {fileID: 2100000, guid: 9ac2b5849e378fb9f955030540305d8a, type: 2}
+  triangleSegments: 20
