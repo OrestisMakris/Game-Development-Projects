@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 289611158194171924}
   - component: {fileID: 835423183308294264}
   - component: {fileID: 2345952385628235343}
+  - component: {fileID: 2925683946743457415}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -158,3 +159,15 @@ MonoBehaviour:
   fireballPrefab: {fileID: 0}
   mat: {fileID: 2100000, guid: 9ac2b5849e378fb9f955030540305d8a, type: 2}
   triangleSegments: 20
+--- !u!114 &2925683946743457415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892410892991233353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85ae5d3fb2e0ea5a8d579c41e58578b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
