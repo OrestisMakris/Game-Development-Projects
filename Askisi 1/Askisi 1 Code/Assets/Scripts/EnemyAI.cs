@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.GetComponent<PlayerCharacter>())
             {
-                if (fireball == null)
+                if (fireball == null && isAlive)
                 {
                     fireball = Instantiate(fireballPrefab);
                     fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
