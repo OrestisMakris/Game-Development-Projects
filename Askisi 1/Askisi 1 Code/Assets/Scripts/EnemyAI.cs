@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
         // Create a Sphere Cast
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.SphereCast(ray, 1.0f, out hit)){
+        if (Physics.SphereCast(ray, 0.75f, out hit)){
             // If the player is hit by the sphere cast shoot fireball
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.GetComponent<PlayerCharacter>())

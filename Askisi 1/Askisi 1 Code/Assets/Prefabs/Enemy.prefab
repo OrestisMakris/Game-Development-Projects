@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1912301761224445753}
   - component: {fileID: 289611158194171924}
   - component: {fileID: 835423183308294264}
-  - component: {fileID: 2345952385628235343}
-  - component: {fileID: 2925683946743457415}
+  - component: {fileID: 7411818004414900012}
+  - component: {fileID: 911068508162058860}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4892410892991233353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128096f4cf44f6640b5b4bdb07050231, type: 3}
+  m_Script: {fileID: 11500000, guid: c5bd52d7fb00fec4c84c137017b46985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
@@ -139,7 +139,7 @@ MonoBehaviour:
   aiFieldOfViewAngle: 60
   aiSightRange: 20
   fireballPrefab: {fileID: 1284065075769622593, guid: e48d0c3e345dc954fb88431ecb092ea4, type: 3}
---- !u!114 &2345952385628235343
+--- !u!114 &7411818004414900012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,9 +157,9 @@ MonoBehaviour:
   aiFieldOfViewAngle: 60
   aiSightRange: 20
   fireballPrefab: {fileID: 0}
-  mat: {fileID: 2100000, guid: 9ac2b5849e378fb9f955030540305d8a, type: 2}
+  mat: {fileID: 2100000, guid: 64a49344f193b97bdaeada70d5564f95, type: 2}
   triangleSegments: 20
---- !u!114 &2925683946743457415
+--- !u!114 &911068508162058860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
