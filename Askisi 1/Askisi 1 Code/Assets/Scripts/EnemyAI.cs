@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public float speed = 3.0f;
     public float rotSpeed = 100.0f; // degrees per second
-    public float obstacleRange = 5.0f;
+    public float obstacleRange = 2.0f;
     private bool isAlive;
 
     // Get the player character component
@@ -31,7 +31,11 @@ public class EnemyAI : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        DrawFieldOfView();
+        // Always move forward
+        if (isAlive)
+        {
+            transform.Translate(0, 0, speed * Time.deltaTime);
+        }
 
         // Get the position of the player character
         Vector3 playerPos = playerCharacter.transform.position;
@@ -39,54 +43,47 @@ public class EnemyAI : MonoBehaviour
         // Calculate the angle between the AI and the player 
         Vector3 playerDirection = playerPos - transform.position;
         angleToPlayer = Vector3.SignedAngle(playerDirection, transform.forward, Vector3.up);
-        Debug.Log("angle to player = " + angleToPlayer);
 
         // Get the magnitude of playerDirection
         distanceToPlayer = playerDirection.magnitude;
-        Debug.Log("distance to player = " + distanceToPlayer);
 
-        if(Mathf.Abs(angleToPlayer) <= aiFieldOfViewAngle/2 && distanceToPlayer <= aiSightRange){
-            MoveToPlayer();
-        } else {
-            Wander();
-        }        
-    }
-
-    public void SetAlive(bool alive){
-        isAlive = alive;
-    }
-
-    public void Wander(){
-        if (isAlive)
-        {
-            transform.Translate(0, 0, speed * Time.deltaTime);
-        }
+        // Create a Sphere Cast
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.SphereCast(ray, 0.75f, out hit))
-        {
+        if (Physics.SphereCast(ray, 0.75f, out hit)){
+            // If the player is hit by the sphere cast shoot fireball
             GameObject hitObject = hit.transform.gameObject;
             if (hitObject.GetComponent<PlayerCharacter>())
             {
-                if (fireball == null)
+                if (fireball == null && isAlive)
                 {
                     fireball = Instantiate(fireballPrefab);
                     fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
                     fireball.transform.rotation = transform.rotation;
                 }
             }
+            // If the enemy hits a wall then rotate randomly
             if (hit.distance < obstacleRange)
             {
-                float angle = Random.Range(-110, 110);
-                transform.Rotate(0, angle, 0);
+                if(hit.collider.tag != "Fireball"){
+                    float angle = Random.Range(-110, 110);
+                    transform.Rotate(0, angle, 0);
+                }
             }
         }
+
+        if(Mathf.Abs(angleToPlayer) <= aiFieldOfViewAngle/2 && distanceToPlayer <= aiSightRange){
+            MoveToPlayer();   
+        }
+    }
+
+    public void SetAlive(bool alive){
+        isAlive = alive;
     }
 
      public void MoveToPlayer()
     {
-        Debug.Log("Moving to player");
-        // Rotate AI to match player's direction and move forward
+        // Rotate Enemy to match player's direction and move forward
         float rotStep = rotSpeed * Time.deltaTime;
 
         if(isAlive){
@@ -97,24 +94,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             transform.Translate(0, 0, speed * Time.deltaTime);
-
-            // Otan ftasei konta thelw na purovolisei
-            /*if(distanceToPlayer <= obstacleRange){
-                Wander();
-            }*/
             
         }
-    }
-
-    void DrawFieldOfView()
-    {
-        // Calculate the left and right boundaries of the field of view
-        Vector3 leftBoundary = Quaternion.Euler(0, -aiFieldOfViewAngle / 2, 0) * transform.forward * aiSightRange;
-        Vector3 rightBoundary = Quaternion.Euler(0, aiFieldOfViewAngle / 2, 0) * transform.forward * aiSightRange;
-
-        // Draw lines to represent the boundaries of the field of view
-        Debug.DrawLine(transform.position, transform.position + leftBoundary, Color.red);
-        Debug.DrawLine(transform.position, transform.position + rightBoundary, Color.red);
-        Debug.DrawLine(transform.position, transform.position + transform.forward * aiSightRange, Color.red);
     }
 }
