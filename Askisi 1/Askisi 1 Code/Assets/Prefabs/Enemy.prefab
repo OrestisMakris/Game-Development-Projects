@@ -128,9 +128,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4892410892991233353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128096f4cf44f6640b5b4bdb07050231, type: 3}
+  m_Script: {fileID: 11500000, guid: c5bd52d7fb00fec4c84c137017b46985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  rotSpeed: 100
   obstacleRange: 5
-  fireballPrefab: {fileID: 1284065075769622593, guid: e48d0c3e345dc954fb88431ecb092ea4, type: 3}
+  aiFieldOfViewAngle: 60
+  aiSightRange: 20
+  fireballPrefab: {fileID: 0}
