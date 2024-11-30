@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
             // If the enemy hits a wall then rotate randomly
-            if (hit.distance < obstacleRange)
+            if (hit.distance < obstacleRange && hit.collider.tag != "Player")
             {
                 if(hit.collider.tag != "Fireball"){
                     float angle = Random.Range(-110, 110);
