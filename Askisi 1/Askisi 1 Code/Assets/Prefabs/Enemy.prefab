@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bd52d7fb00fec4c84c137017b46985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   rotSpeed: 100
   obstacleRange: 2
   aiFieldOfViewAngle: 60
