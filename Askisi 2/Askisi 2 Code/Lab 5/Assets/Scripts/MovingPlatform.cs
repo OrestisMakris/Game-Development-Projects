@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Vector3 finishPos = Vector3.zero;
     public float speed = 0.5f;
-
+    public Vector3 finishPos = Vector3.zero;
     public Vector3 startPos;
     private float trackPercent = 0;
     private int direction = 1;
