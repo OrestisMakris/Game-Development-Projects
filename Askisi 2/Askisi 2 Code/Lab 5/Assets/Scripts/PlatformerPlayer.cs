@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlatformerPlayer : MonoBehaviour
 {
     public float speed = 4.5f;
+    public float jumpForce = 12.0f;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D box;
-    public float jumpForce = 12.0f;
 
     void Start()
     {
@@ -25,19 +25,19 @@ public class PlatformerPlayer : MonoBehaviour
 
         Vector3 max = box.bounds.max;
         Vector3 min = box.bounds.min;
-        Vector2 corner1 = new Vector2(max.x - .01f, (min.y - .1f));
-        Vector2 corner2 = new Vector2(min.x - .01f, (min.y - .2f));
+        Vector2 corner1 = new Vector2(max.x - 0.01f, min.y - 0.1f);
+        Vector2 corner2 = new Vector2(min.x + 0.01f, min.y - 0.2f);
         Collider2D hit = Physics2D.OverlapArea(corner1, corner2);
 
-        bool grounded = false;
+        bool grounded = hit != null;
 
-        if (hit != null)
+        // Platform descent: independent of horizontal movement
+        if (grounded && Input.GetKeyDown(KeyCode.S)&& hit.CompareTag("Platform"))
         {
-            grounded = true;
+            StartCoroutine(TemporarilyIgnoreCollision(hit));
         }
 
-        body.gravityScale = (grounded && Mathf.Approximately(deltaX, 0)) ? 0 : 1;
-
+        // Jumping
         if (grounded && Input.GetKeyDown(KeyCode.Space))
         {
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -54,14 +54,15 @@ public class PlatformerPlayer : MonoBehaviour
         {
             transform.parent = platform.transform;
         }
-
         else
         {
             transform.parent = null;
         }
 
+        // Update animation speed
         anim.SetFloat("speed", Mathf.Abs(deltaX));
 
+        // Flip player sprite based on direction
         Vector3 pScale = Vector3.one;
         if (platform != null)
         {
@@ -73,6 +74,15 @@ public class PlatformerPlayer : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(deltaX) / pScale.x, 1 / pScale.y, 1);
         }
     }
+
+    // Coroutine to temporarily disable collision with a platform
+    private IEnumerator TemporarilyIgnoreCollision(Collider2D platform)
+    {
+        if (platform != null)
+        {
+            Physics2D.IgnoreCollision(platform, box, true); // Disable collision
+            yield return new WaitForSeconds(0.5f); // Wait briefly
+            Physics2D.IgnoreCollision(platform, box, false); // Re-enable collision
+        }
+    }
 }
-
-
