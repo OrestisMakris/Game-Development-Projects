@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // For reloading the scene
 
-public class MovingEnemy : MonoBehaviour
+public class WanderingEnemy : MonoBehaviour
 {
-
-    public float speed = 1.0f;
+    public PlayerStats playerStats;
+    public float speed = 2.0f;
     public float wanderDist = 1.0f;
     private Rigidbody2D body;
     private Vector3 startPos;
@@ -38,11 +39,21 @@ public class MovingEnemy : MonoBehaviour
         }
 
         // Flip the enemy's sprite to face the direction of movement
-        transform.localScale = new Vector3(direction, 1, 1);
-        
+        transform.localScale = new Vector3(direction, 1, 1);   
     }
 
-    public void SetDifficulty(float multiplier, int index)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with the player
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Reload the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            playerStats.AddFailure();
+        }
+    }
+
+    public void SetDifficulty(float multiplier)
     {
         speed = speed * multiplier;
     }

@@ -8,12 +8,14 @@
  {
      public GameObject pauseMenuUI;
      public Dropdown difficultyDropdown;
+     public PlayerStats playerStats;
+     
      private bool isPaused = false;
+     private float speedMultiplier = 1.0f; // Default Medium Difficulty Speed Multiplier
      void Start()
      {
         // Set default difficulty
-        //difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
-        //SetDifficulty(1); // Default to Medium
+        difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
      }
 
      void Update()
@@ -49,24 +51,36 @@
      {
          Time.timeScale = 1f; // Reset time scale
          SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-         PlayerStats.failures = 0; // Reset failures
+         playerStats.ResetFailures(); // Reset failures
      }
 
-     /*public void SetDifficulty(int index)
+     public void SetDifficulty(int index)
      {
-         switch (index)
-         {
-             case 0: // Easy
-                 Enemy.speedMultiplier = 0.75f;
-                 break;
-             case 1: // Medium
-                 Enemy.speedMultiplier = 1f;
-                 break;
-             case 2: // Hard
-                 Enemy.speedMultiplier = 1.25f;
-                 break;
-         }
-     }*/
+        switch (index)
+        {
+            case 0: // Easy
+                speedMultiplier = 0.75f;
+                break;
+            case 1: // Medium
+                speedMultiplier = 1f;
+                break;
+            case 2: // Hard
+                speedMultiplier = 1.25f;
+                break;
+        }
+
+        // Update WanderingEnemy instances
+        WanderingEnemy[] wanderingEnemies = FindObjectsOfType<WanderingEnemy>();
+        foreach (WanderingEnemy enemy in wanderingEnemies){
+            enemy.SetDifficulty(speedMultiplier);
+        }
+
+        // Update FireballEnemy instances
+        FireballEnemy[] fireballEnemies = FindObjectsOfType<FireballEnemy>();
+        foreach (FireballEnemy enemy in fireballEnemies){
+            enemy.SetDifficulty(speedMultiplier);
+        }
+     }
 
      public void QuitGame()
      {

@@ -76,19 +76,7 @@ public class PlatformerPlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the collision is with an enemy
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            // Reload the current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
-
-
-
-// temp disable collision with a platform
+    // temp disable collision with a platform
     private IEnumerator IgnoreCollisionS(Collider2D platform)
     {
         if (platform != null)

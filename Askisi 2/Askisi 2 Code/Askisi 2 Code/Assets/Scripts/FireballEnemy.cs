@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballEnemy : MonoBehaviour
 {
     public float fireballRange = 6.0f;
-    public float fireballSpeed = 2.0f;
+    public float fireballSpeed = 4.0f;
 
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;
@@ -56,5 +56,10 @@ public class FireballEnemy : MonoBehaviour
         fireball.transform.localScale = new Vector3(Mathf.Sign(playerDir.x), 1, 1);
 
          anim.SetBool("fireball_instantiated", false);
+    }
+
+    public void SetDifficulty(float multiplier)
+    {
+        fireballSpeed = fireballSpeed * multiplier;
     }
 }
