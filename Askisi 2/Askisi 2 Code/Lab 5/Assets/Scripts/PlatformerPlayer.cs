@@ -34,7 +34,7 @@ public class PlatformerPlayer : MonoBehaviour
         // Platform descent: independent of horizontal movement
         if (grounded && Input.GetKeyDown(KeyCode.S)&& hit.CompareTag("Platform"))
         {
-            StartCoroutine(TemporarilyIgnoreCollision(hit));
+            StartCoroutine(IgnoreCollisionS(hit));
         }
 
         // Jumping
@@ -75,8 +75,8 @@ public class PlatformerPlayer : MonoBehaviour
         }
     }
 
-    // Coroutine to temporarily disable collision with a platform
-    private IEnumerator TemporarilyIgnoreCollision(Collider2D platform)
+// temp disable collision with a platform
+    private IEnumerator IgnoreCollisionS(Collider2D platform)
     {
         if (platform != null)
         {
