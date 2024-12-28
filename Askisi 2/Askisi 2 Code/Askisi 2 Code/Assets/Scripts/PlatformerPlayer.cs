@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement; // For reloading the scene
 
 public class PlatformerPlayer : MonoBehaviour
 {
+    public PlayerStats playerStats;
     public float speed = 4.5f;
     public float jumpForce = 12.0f;
     private Rigidbody2D body;
@@ -84,6 +85,18 @@ public class PlatformerPlayer : MonoBehaviour
             Physics2D.IgnoreCollision(platform, box, true); // Disable collision
             yield return new WaitForSeconds(0.5f); // Wait briefly
             Physics2D.IgnoreCollision(platform, box, false); // Re-enable collision
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with the player
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Reload the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+            playerStats.AddFailure();
         }
     }
 }

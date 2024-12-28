@@ -26,7 +26,7 @@ public class Fireball : MonoBehaviour
             // Reload the scene if it hits the player
             //Debug.Log("Fireball hit the player!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            playerStats= GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+            playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
             playerStats.AddFailure();
         }
         // Ignore collisions with the enemy that fired it
