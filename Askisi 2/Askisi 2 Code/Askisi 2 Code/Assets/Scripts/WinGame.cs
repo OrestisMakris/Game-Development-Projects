@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // For reloading the scene
 
 public class WinFlag : MonoBehaviour
 {
