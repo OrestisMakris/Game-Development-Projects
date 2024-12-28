@@ -36,7 +36,7 @@ public class PlatformerPlayer : MonoBehaviour
         // Platform descent: independent of horizontal movement
         if (grounded && Input.GetAxisRaw("Vertical") < 0 && hit.CompareTag("Platform"))
         {
-            StartCoroutine(IgnoreCollisionS(hit));
+            StartCoroutine(IgnoreCollisions(hit));
         }
 
         // Jumping
@@ -78,7 +78,7 @@ public class PlatformerPlayer : MonoBehaviour
     }
 
     // temp disable collision with a platform
-    private IEnumerator IgnoreCollisionS(Collider2D platform)
+    private IEnumerator IgnoreCollisions(Collider2D platform)
     {
         if (platform != null)
         {
