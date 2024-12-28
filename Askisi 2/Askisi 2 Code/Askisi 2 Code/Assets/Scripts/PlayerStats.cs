@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public Text failureText; //UI text to display the failures
-    
+    public TMP_Text failureText;
     private int failures = 0;
 
     void Start()
