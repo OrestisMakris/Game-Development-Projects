@@ -6,7 +6,7 @@ public class MovingEnemy : MonoBehaviour
 {
 
     public float speed = 2.0f;
-    public float wanderDist = 2.0f;
+    public float wanderDist = 1.0f;
     private Rigidbody2D body;
     private Vector3 startPos;
     private bool movingRight = true;
