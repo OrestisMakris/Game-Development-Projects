@@ -2339,7 +2339,6 @@ GameObject:
   - component: {fileID: 579860433}
   - component: {fileID: 579860432}
   - component: {fileID: 579860431}
-  - component: {fileID: 579860430}
   m_Layer: 0
   m_Name: Block (4)
   m_TagString: Untagged
@@ -2347,25 +2346,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!251 &579860430
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579860429}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!61 &579860431
 BoxCollider2D:
   m_ObjectHideFlags: 0
