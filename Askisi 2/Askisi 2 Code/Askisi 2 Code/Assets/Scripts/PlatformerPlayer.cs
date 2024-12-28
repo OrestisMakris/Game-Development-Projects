@@ -34,7 +34,7 @@ public class PlatformerPlayer : MonoBehaviour
         bool grounded = hit != null;
 
         // Platform descent: independent of horizontal movement
-        if (grounded && Input.GetKeyDown(KeyCode.S)&& hit.CompareTag("Platform"))
+        if (grounded && Input.GetAxisRaw("Vertical") < 0 && hit.CompareTag("Platform"))
         {
             StartCoroutine(IgnoreCollisionS(hit));
         }
