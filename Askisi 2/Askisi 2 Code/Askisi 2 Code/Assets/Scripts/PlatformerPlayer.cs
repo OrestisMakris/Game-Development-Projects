@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // For reloading the scene
 
 public class PlatformerPlayer : MonoBehaviour
 {
@@ -74,6 +75,18 @@ public class PlatformerPlayer : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Sign(deltaX) / pScale.x, 1 / pScale.y, 1);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collision is with an enemy
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Reload the current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+
 
 // temp disable collision with a platform
     private IEnumerator IgnoreCollisionS(Collider2D platform)
