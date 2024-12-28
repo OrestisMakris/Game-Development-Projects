@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 121581749}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,6 +917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55243c02cc6bb3846bf58e584198a1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireballRange: 6
+  fireballSpeed: 4
+  fireballPrefab: {fileID: 4474481690430486915, guid: 138586023144e26669042152fdd742ba, type: 3}
 --- !u!1 &1780328595
 GameObject:
   m_ObjectHideFlags: 0
