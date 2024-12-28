@@ -15,6 +15,10 @@
 *.opendb
 *.VC.db
 
+# Unity User Settings
+UserSettings/
+*.dwlt
+
 # Ignore files created by OS or IDEs
 .DS_Store
 Thumbs.db
