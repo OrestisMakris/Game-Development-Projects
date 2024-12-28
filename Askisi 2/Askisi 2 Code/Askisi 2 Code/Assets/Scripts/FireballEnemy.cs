@@ -31,7 +31,6 @@ public class FireballEnemy : MonoBehaviour
 
         // Get the x component of the distance between the player and the enemy
         float distanceToPlayer = playerPos.x - transform.position.x;
-        //Debug.Log(distanceToPlayer);
 
         // Get the player's direction
         playerDir = (playerPos - transform.position).normalized;
@@ -41,6 +40,9 @@ public class FireballEnemy : MonoBehaviour
             // Transition to the fireball throughing animation
             anim.SetBool("fireball_instantiated", true);
         }
+
+        // Flip the enemy to face the player
+        transform.localScale = new Vector3(Mathf.Sign(playerDir.x), 1, 1);
         
     }
 
@@ -49,6 +51,9 @@ public class FireballEnemy : MonoBehaviour
         // Instantiate a fireball at the position of the enemy and fire it in the player's direction
         fireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
         fireball.GetComponent<Rigidbody2D>().velocity = playerDir * fireballSpeed; 
+
+        // Flip the fireball to face the player
+        fireball.transform.localScale = new Vector3(Mathf.Sign(playerDir.x), 1, 1);
 
          anim.SetBool("fireball_instantiated", false);
     }
