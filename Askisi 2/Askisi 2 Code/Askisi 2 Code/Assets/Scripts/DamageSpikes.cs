@@ -11,6 +11,8 @@ public class Spike : MonoBehaviour
         {
             //Debug.Log("Player hit a spike! Game Over.");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+            playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
             playerStats.AddFailure();
         }
     }
