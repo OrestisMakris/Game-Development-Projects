@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballEnemy : MonoBehaviour
 {
     public float fireballRange = 6.0f;
-    public float fireballSpeed = 4.0f;
+    public float fireballSpeed = 2.0f;
 
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;

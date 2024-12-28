@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingEnemy : MonoBehaviour
 {
 
-    public float speed = 2.0f;
+    public float speed = 1.0f;
     public float wanderDist = 1.0f;
     private Rigidbody2D body;
     private Vector3 startPos;
@@ -40,5 +40,10 @@ public class MovingEnemy : MonoBehaviour
         // Flip the enemy's sprite to face the direction of movement
         transform.localScale = new Vector3(direction, 1, 1);
         
+    }
+
+    public void SetDifficulty(float multiplier, int index)
+    {
+        speed = speed * multiplier;
     }
 }

@@ -4142,7 +4142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804ef60fd5f975c8d89bf0851d61b237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   wanderDist: 1
 --- !u!50 &1264554838
 Rigidbody2D:
@@ -5107,7 +5107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballRange: 6
-  fireballSpeed: 4
+  fireballSpeed: 2
   fireballPrefab: {fileID: 4474481690430486915, guid: 138586023144e26669042152fdd742ba, type: 3}
 --- !u!95 &1536395143
 Animator:
