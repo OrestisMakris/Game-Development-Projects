@@ -3,20 +3,26 @@
  using UnityEngine;
  using UnityEngine.SceneManagement;
  using UnityEngine.UI;
+ using TMPro; 
 
  public class PauseMenu : MonoBehaviour
  {
      public GameObject pauseMenuUI;
-     public Dropdown difficultyDropdown;
+     public TMP_Dropdown difficultyDropdown;
      public PlayerStats playerStats;
      
      private bool isPaused = false;
      private float speedMultiplier = 1.0f; // Default Medium Difficulty Speed Multiplier
-     void Start()
-     {
-        // Set default difficulty
-        difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
-     }
+
+void Start()
+{
+    difficultyDropdown.value = 1; // Medium (Index 1)
+    difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
+
+    // Trigger the SetDifficulty method to ensure it is applied
+    SetDifficulty(difficultyDropdown.value);
+}
+
 
      void Update()
      {
@@ -59,13 +65,13 @@
         switch (index)
         {
             case 0: // Easy
-                speedMultiplier = 0.75f;
+                speedMultiplier = 0.55f;
                 break;
             case 1: // Medium
                 speedMultiplier = 1f;
                 break;
             case 2: // Hard
-                speedMultiplier = 1.25f;
+                speedMultiplier = 2f;
                 break;
         }
 
