@@ -24,7 +24,6 @@ public class Fireball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.CompareTag("Player")){
             // Reload the scene if it hits the player
-            //Debug.Log("Fireball hit the player!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
             playerStats.AddFailure();

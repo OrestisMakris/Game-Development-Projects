@@ -58,8 +58,19 @@ public class FireballEnemy : MonoBehaviour
          anim.SetBool("fireball_instantiated", false);
     }
 
-    public void SetDifficulty(float multiplier)
+    public void SetDifficulty(int index)
     {
-        fireballSpeed = fireballSpeed * multiplier;
+        switch (index)
+        {
+            case 0: // Easy
+                fireballSpeed = 2.0f;
+                break;
+            case 1: // Medium
+                fireballSpeed = 4.0f;
+                break;
+            case 2: // Hard
+                fireballSpeed = 6.0f;
+                break;
+        }
     }
 }

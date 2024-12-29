@@ -12,7 +12,6 @@ public class FallDetector : MonoBehaviour
         PlatformerPlayer player = collision.GetComponent<PlatformerPlayer>();
         if (player != null)
         {
-            // Debug.Log("Player fell off the platform! Game Over.");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
             playerStats.AddFailure();

@@ -12,15 +12,17 @@
      public PlayerStats playerStats;
      
      private bool isPaused = false;
-     private float speedMultiplier = 1.0f; // Default Medium Difficulty Speed Multiplier
 
 void Start()
 {
-    difficultyDropdown.value = 1; // Medium (Index 1)
+    // Load the saved difficulty from PlayerPrefs, 
+    // default to Medium (index 1) if not set
+    int savedDifficulty = PlayerPrefs.GetInt("GameDifficulty", 1); 
+    difficultyDropdown.value = savedDifficulty;
     difficultyDropdown.onValueChanged.AddListener(SetDifficulty);
 
-    // Trigger the SetDifficulty method to ensure it is applied
-    SetDifficulty(difficultyDropdown.value);
+    // Apply the loaded or default difficulty
+    SetDifficulty(savedDifficulty);
 }
 
 
@@ -58,35 +60,29 @@ void Start()
          Time.timeScale = 1f; // Reset time scale
          SceneManager.LoadScene(SceneManager.GetActiveScene().name);
          playerStats.ResetFailures(); // Reset failures
+
+         // Reset difficulty to Medium (index 1) and save it
+        difficultyDropdown.value = 1;
+        PlayerPrefs.SetInt("GameDifficulty", 1);
+        PlayerPrefs.Save();
      }
 
      public void SetDifficulty(int index)
      {
-        switch (index)
-        {
-            case 0: // Easy
-                speedMultiplier = 0.55f;
-                break;
-            case 1: // Medium
-                speedMultiplier = 1f;
-                break;
-            case 2: // Hard
-                speedMultiplier = 2f;
-                break;
-        }
-
-        //Debug.Log($"Difficulty set to {index}, speedMultiplier: {speedMultiplier}");
+        // Save the selected difficulty to PlayerPrefs
+        PlayerPrefs.SetInt("GameDifficulty", index);
+        PlayerPrefs.Save();
 
         // Update WanderingEnemy instances
         WanderingEnemy[] wanderingEnemies = FindObjectsOfType<WanderingEnemy>();
         foreach (WanderingEnemy enemy in wanderingEnemies){
-            enemy.SetDifficulty(speedMultiplier);
+            enemy.SetDifficulty(index);
         }
 
         // Update FireballEnemy instances
         FireballEnemy[] fireballEnemies = FindObjectsOfType<FireballEnemy>();
         foreach (FireballEnemy enemy in fireballEnemies){
-            enemy.SetDifficulty(speedMultiplier);
+            enemy.SetDifficulty(index);
         }
      }
  }

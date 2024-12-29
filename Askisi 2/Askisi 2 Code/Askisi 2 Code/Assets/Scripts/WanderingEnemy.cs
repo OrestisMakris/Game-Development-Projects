@@ -40,8 +40,19 @@ public class WanderingEnemy : MonoBehaviour
         transform.localScale = new Vector3(direction, 1, 1);   
     }
 
-    public void SetDifficulty(float multiplier)
+    public void SetDifficulty(int index)
     {
-        speed = speed * multiplier;
+        switch (index)
+        {
+            case 0: // Easy
+                speed = 1.0f;
+                break;
+            case 1: // Medium
+                speed = 2.0f;
+                break;
+            case 2: // Hard
+                speed = 3.0f;
+                break;
+        }
     }
 }

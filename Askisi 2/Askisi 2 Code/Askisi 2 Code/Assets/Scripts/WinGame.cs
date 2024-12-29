@@ -20,7 +20,6 @@ public class WinFlag : MonoBehaviour
         PlatformerPlayer player = collision.GetComponent<PlatformerPlayer>();
         if (player != null)
         {
-            Debug.Log("Congratulations! You Win!");
             ShowWinMessage();
         }
     }
