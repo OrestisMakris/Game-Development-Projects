@@ -75,6 +75,8 @@ void Start()
                 break;
         }
 
+        //Debug.Log($"Difficulty set to {index}, speedMultiplier: {speedMultiplier}");
+
         // Update WanderingEnemy instances
         WanderingEnemy[] wanderingEnemies = FindObjectsOfType<WanderingEnemy>();
         foreach (WanderingEnemy enemy in wanderingEnemies){
