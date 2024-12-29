@@ -81,9 +81,4 @@
             enemy.SetDifficulty(speedMultiplier);
         }
      }
-
-     public void QuitGame()
-     {
-         Application.Quit();
-     }
  }
