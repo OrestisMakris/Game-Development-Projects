@@ -140,4 +140,10 @@ public class PointClickMovement : MonoBehaviour
             body.velocity = hit.moveDirection * pushForce;
         }
     }
+
+    // Public property to check if the player is moving
+    public bool IsMoving()
+    {
+        return targetPos != null && curSpeed > 0.1f;
+    }
 }

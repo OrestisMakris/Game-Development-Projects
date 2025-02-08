@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7477363242564829891}
   - component: {fileID: 1910280621896810345}
   - component: {fileID: -7066121784307883075}
-  - component: {fileID: 6453604588142870681}
+  - component: {fileID: 3061915484413053279}
   m_Layer: 2
-  m_Name: Fireball
+  m_Name: EnemyFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6453604588142870681
+--- !u!114 &3061915484413053279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

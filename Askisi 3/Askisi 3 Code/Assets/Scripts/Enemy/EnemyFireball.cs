@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class EnemyFireball : MonoBehaviour
 {
     public float speed = 10.0f;
     public int damage = 5;

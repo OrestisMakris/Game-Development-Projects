@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             bool isShowing = popup.gameObject.activeSelf;
             popup.gameObject.SetActive(!isShowing);
