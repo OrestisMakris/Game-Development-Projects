@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 117999916}
   - component: {fileID: 117999918}
   - component: {fileID: 117999917}
+  - component: {fileID: 117999919}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -598,7 +599,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: dadfe4db9fb8c594abf23febe42df5ef, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -615,6 +616,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117999915}
   m_CullTransparentMesh: 1
+--- !u!114 &117999919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117999915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5d21b63ce003e4b809a28d120fc245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashIcon: {fileID: 117999917}
+  useDash: {fileID: 1158620710}
 --- !u!1 &118566184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,8 +4064,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 20
-  dashDuration: 0.2
+  dashDuration: 0.3
   dashCooldown: 5
+  dashCooldownUI: {fileID: 117999919}
 --- !u!1 &1158699599
 GameObject:
   m_ObjectHideFlags: 0

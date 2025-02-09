@@ -6,7 +6,7 @@ public class ThrowFireball : MonoBehaviour
 {
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;
-    [SerializeField] float rotationSpeed = 10f;
+    [SerializeField] float rotationSpeed = 720f; // Degrees per second
     private Quaternion targetRotation;
     private bool isRotating = false;
 
@@ -26,18 +26,24 @@ public class ThrowFireball : MonoBehaviour
         {
             // Create a ray from the camera through the mouse position.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            Vector3 targetPoint = ray.origin + ray.direction * 100f;
 
-            Vector3 targetPoint;
-            // If the raycast hits something in the scene...
-            if (Physics.Raycast(ray, out hit))
+            // Use RaycastAll to ignore the player's shield.
+            RaycastHit[] hits = Physics.RaycastAll(ray);
+            if (hits.Length > 0)
             {
-                targetPoint = hit.point;
-            }
-            else
-            {
-                // Otherwise, pick a point far away in the ray's direction.
-                targetPoint = ray.origin + ray.direction * 100f;
+                // Sort the hits by distance so that the closest hit is first.
+                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+                //bool foundValidHit = false;
+                foreach (RaycastHit hitInfo in hits)
+                {
+                    // Ignore any hit on the player's shield.
+                    if (!hitInfo.collider.CompareTag("PlayerShield"))
+                    {
+                        targetPoint = hitInfo.point;
+                        break;
+                    }
+                }
             }
 
             // Calculate the horizontal direction from the player to the target.
@@ -68,8 +74,11 @@ public class ThrowFireball : MonoBehaviour
         // Smoothly rotate the player towards the target rotation.
         if (isRotating)
         {
-            // Interpolate between the current rotation and the target rotation.
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            // Calculate the maximum angle to rotate this frame.
+            float maxAngleDelta = rotationSpeed * Time.deltaTime;
+
+            // Rotate toward the target rotation 
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, maxAngleDelta);
 
             // Check if the rotation is close enough to the target rotation.
             if (Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)

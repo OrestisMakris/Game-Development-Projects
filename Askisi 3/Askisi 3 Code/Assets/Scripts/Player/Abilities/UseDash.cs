@@ -4,8 +4,9 @@ using UnityEngine;
 public class UseDash : MonoBehaviour
 {
     [SerializeField] private float dashSpeed = 20f;
-    [SerializeField] private float dashDuration = 0.2f;    // Duration of the dash (in seconds)
+    [SerializeField] private float dashDuration = 0.3f;    // Duration of the dash (in seconds)
     [SerializeField] private float dashCooldown = 5f;      // Cooldown time before dash can be used again
+    [SerializeField] private DashCooldownUI dashCooldownUI; // Reference to the ShieldCooldownUI script
 
     private bool isDashReady = true;  // Indicates if dash is ready
     private bool isDashing = false;   // Indicates if the player is currently dashing
@@ -41,12 +42,17 @@ public class UseDash : MonoBehaviour
         }
 
         isDashing = false;
-        // Start the cooldown before the dash can be used again
-        Invoke(nameof(ResetDash), dashCooldown);
+        dashCooldownUI.StartCooldown(); // Start UI cooldown effect
+        Invoke(nameof(ResetDash), dashCooldown); // Start the cooldown before the dash can be used again
     }
 
     private void ResetDash()
     {
         isDashReady = true;
+    }
+
+    public float GetDashCooldown()
+    {
+        return dashCooldown;
     }
 }
