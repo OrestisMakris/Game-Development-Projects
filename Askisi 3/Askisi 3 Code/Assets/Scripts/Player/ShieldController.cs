@@ -7,17 +7,20 @@ public class ShieldController : MonoBehaviour
     [SerializeField] private float shieldDuration = 3f;
     [SerializeField] private GameObject shieldVisual;
     private CapsuleCollider shieldCollider;
+    private ShieldCooldownUI shieldCooldownUI;
+    public bool isShieldActive = false;
 
     private void Awake()
     {
+        isShieldActive = false;
         shieldCollider = GetComponent<CapsuleCollider>();
-        DeactivateShield();
     }
 
     public void ActivateShield()
     {
         shieldVisual.SetActive(true);
         shieldCollider.enabled = true;
+        isShieldActive = true;
         Invoke(nameof(DeactivateShield), shieldDuration);
     }
 
@@ -25,6 +28,8 @@ public class ShieldController : MonoBehaviour
     {
         shieldVisual.SetActive(false);
         shieldCollider.enabled = false;
+        isShieldActive = false;
+        shieldCooldownUI.StartCooldown(); // Start UI cooldown effect
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,4 +39,10 @@ public class ShieldController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    public void SetCooldownUI(ShieldCooldownUI cooldownUI)
+    {
+        shieldCooldownUI = cooldownUI;
+    }
+
 }

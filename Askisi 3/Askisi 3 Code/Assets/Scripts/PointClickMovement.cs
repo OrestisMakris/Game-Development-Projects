@@ -21,7 +21,6 @@ public class PointClickMovement : MonoBehaviour
     private float curSpeed = 0f;
     private Vector3? targetPos;
 
-
     private float vertSpeed;
     private ControllerColliderHit contact;
 
@@ -34,7 +33,6 @@ public class PointClickMovement : MonoBehaviour
     void Start()
     {
         vertSpeed = minFall;
-
         charController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
@@ -42,30 +40,40 @@ public class PointClickMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // start with zero and add movement components progressively
         Vector3 movement = Vector3.zero;
 
+        // Use RaycastAll to ignore the shield collider and find the floor target.
         if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit mouseHit;
+            RaycastHit[] hits = Physics.RaycastAll(ray);
 
-            if (Physics.Raycast(ray, out mouseHit))
+            if (hits.Length > 0)
             {
-                targetPos = mouseHit.point;
-                curSpeed = moveSpeed;
+                // Sort the hits by distance.
+                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+                // Pick the first hit that is not the player's shield.
+                foreach (RaycastHit hitInfo in hits)
+                {
+                    if (!hitInfo.collider.CompareTag("PlayerShield"))
+                    {
+                        targetPos = hitInfo.point;
+                        curSpeed = moveSpeed;
+                        break;
+                    }
+                }
             }
         }
 
         if (targetPos != null)
         {
-            if (curSpeed > (moveSpeed * .5f))
+            if (curSpeed > (moveSpeed * 0.5f))
             {
                 Vector3 adjustedPos = new Vector3(targetPos.Value.x, transform.position.y, targetPos.Value.z);
                 Quaternion targetRot = Quaternion.LookRotation(adjustedPos - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
-
             }
 
             movement = curSpeed * Vector3.forward;
@@ -82,17 +90,16 @@ public class PointClickMovement : MonoBehaviour
         }
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        // raycast down to address steep slopes and dropoff edge
+        // Raycast down to address steep slopes and drop-off edges.
         bool hitGround = false;
         RaycastHit hit;
         if (vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             float check = (charController.height + charController.radius) / 1.9f;
-            hitGround = hit.distance <= check;  // to be sure check slightly beyond bottom of capsule
+            hitGround = hit.distance <= check;
         }
 
-        // y movement: possibly jump impulse up, always accel down
-        // could _charController.isGrounded instead, but then cannot workaround dropoff edge
+        // y movement: possibly jump impulse up, always accelerate down
         if (hitGround)
         {
             vertSpeed = minFall;
@@ -106,11 +113,11 @@ public class PointClickMovement : MonoBehaviour
                 vertSpeed = terminalVelocity;
             }
             if (contact != null)
-            {   // not right at level start
+            {
                 animator.SetBool("Jumping", true);
             }
 
-            // workaround for standing on dropoff edge
+            // Workaround for standing on drop-off edge.
             if (charController.isGrounded)
             {
                 if (Vector3.Dot(movement, contact.normal) < 0)
@@ -129,7 +136,7 @@ public class PointClickMovement : MonoBehaviour
         charController.Move(movement);
     }
 
-    // store collision to use in Update
+    // Store collision to use in Update.
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         contact = hit;
@@ -141,7 +148,7 @@ public class PointClickMovement : MonoBehaviour
         }
     }
 
-    // Public property to check if the player is moving
+    // Public property to check if the player is moving.
     public bool IsMoving()
     {
         return targetPos != null && curSpeed > 0.1f;

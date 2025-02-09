@@ -72,7 +72,7 @@ public class ThrowFireball : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Check if the rotation is close enough to the target rotation.
-            if (Quaternion.Angle(transform.rotation, targetRotation) < 10.0f)
+            if (Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)
             {
                 isRotating = false;  // Stop rotating.
 

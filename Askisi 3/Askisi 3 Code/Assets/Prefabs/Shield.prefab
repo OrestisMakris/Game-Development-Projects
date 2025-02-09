@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8046309670698985160}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: PlayerShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,3 +154,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldDuration: 3
   shieldVisual: {fileID: 8809339727746582807}
+  isShieldActive: 0

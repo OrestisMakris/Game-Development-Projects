@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 359340232}
   - component: {fileID: 359340231}
   m_Layer: 5
-  m_Name: Dash Button
+  m_Name: Dash Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1332,7 +1332,7 @@ RectTransform:
   m_GameObject: {fileID: 359340229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 117999916}
@@ -1555,6 +1555,7 @@ GameObject:
   - component: {fileID: 405848514}
   - component: {fileID: 405848516}
   - component: {fileID: 405848515}
+  - component: {fileID: 405848517}
   m_Layer: 5
   m_Name: Shield
   m_TagString: Untagged
@@ -1603,7 +1604,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: c67f6060700f79d4f842b3632c073ff9, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1620,6 +1621,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405848513}
   m_CullTransparentMesh: 1
+--- !u!114 &405848517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405848513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f36946aa67a5b24196567ce158cda95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldIcon: {fileID: 405848515}
+  useShield: {fileID: 1158620708}
 --- !u!1 &489308242
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,7 +3694,7 @@ GameObject:
   - component: {fileID: 1111993797}
   - component: {fileID: 1111993796}
   m_Layer: 5
-  m_Name: Fireball Button
+  m_Name: Fireball Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3694,8 +3709,8 @@ RectTransform:
   m_GameObject: {fileID: 1111993794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.7, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 831106253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3992,6 +4007,50 @@ MonoBehaviour:
   deceleration: 25
   targetBuffer: 1.5
   pushForce: 3
+--- !u!114 &1158620707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e494fe293053645ac21d663f28f26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 1284065075769622593, guid: 3247ae49d1b953645b005beb0f179722, type: 3}
+  rotationSpeed: 10
+--- !u!114 &1158620708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c08a0b8a84cf43863e8e9c76a15cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldPrefab: {fileID: 9200802869383422087, guid: e3444f30fa96afc41a72c0f72c3bc627, type: 3}
+  shieldCooldown: 5
+  shieldCooldownUI: {fileID: 405848517}
+--- !u!114 &1158620710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55662e07086193b4d927f488ec63ce95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 5
 --- !u!1 &1158699599
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,7 +4186,7 @@ GameObject:
   - component: {fileID: 1177890258}
   - component: {fileID: 1177890257}
   m_Layer: 5
-  m_Name: Shield Button
+  m_Name: Shield Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4142,7 +4201,7 @@ RectTransform:
   m_GameObject: {fileID: 1177890255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 405848514}
@@ -5682,6 +5741,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1158620705}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620707}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620708}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620710}
     - targetCorrespondingSourceObject: {fileID: -4819223349682164798, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1250800788}

@@ -20,6 +20,11 @@ public class PlayerFireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Check if the collided object is the player's shield
+        if (other.GetComponent<ShieldController>() != null)
+        {
+            return; // Ignore the collision 
+        }
         // Check if the collided object has a ReactiveTarget component (enemy)
         ReactiveTarget enemy = other.GetComponent<ReactiveTarget>();
         if (enemy != null)

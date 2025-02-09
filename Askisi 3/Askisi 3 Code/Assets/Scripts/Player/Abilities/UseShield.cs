@@ -5,7 +5,8 @@ using UnityEngine;
 public class UseShield : MonoBehaviour
 {
     [SerializeField] private GameObject shieldPrefab;
-    [SerializeField] private float shieldCooldown = 10f;
+    [SerializeField] private float shieldCooldown = 5f;
+    [SerializeField] private ShieldCooldownUI shieldCooldownUI;
     private ShieldController currentShield;
     private bool isShieldReady = true;
 
@@ -23,6 +24,7 @@ public class UseShield : MonoBehaviour
         {
             GameObject shieldObj = Instantiate(shieldPrefab, transform.position, Quaternion.identity, transform);
             currentShield = shieldObj.GetComponent<ShieldController>();
+            currentShield.SetCooldownUI(shieldCooldownUI); // Set the cooldown UI reference
         }
 
         currentShield.ActivateShield();
@@ -37,6 +39,12 @@ public class UseShield : MonoBehaviour
 
     public bool IsShieldActive()
     {
-        return currentShield != null && currentShield.gameObject.activeInHierarchy;
+        return currentShield != null && currentShield.isShieldActive;
+    }
+
+    // Shield cooldown gette
+    public float GetShieldCooldown()
+    {
+        return shieldCooldown;
     }
 }

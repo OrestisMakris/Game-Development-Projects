@@ -22,7 +22,7 @@ public class EnemyFireball : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if the fireball hit the player shield first
-        if (playerShield != null && playerShield.IsShieldActive())
+        if (playerShield.IsShieldActive())
         {
             Destroy(gameObject);
             return;

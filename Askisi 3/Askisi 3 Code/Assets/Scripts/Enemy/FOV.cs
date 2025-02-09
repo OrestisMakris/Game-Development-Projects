@@ -9,6 +9,7 @@ public class FOV : MonoBehaviour
     private Transform playerTransform;
 
     private float maxDistance = 5.0f;
+    private float rotationSpeed = 90f; // Controls how fast the enemy rotates (degrees per second)
 
     void Start()
     {
@@ -90,7 +91,11 @@ public class FOV : MonoBehaviour
         direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-        // Set the enemy's rotation instantly to face the player
-        enemyAI.transform.rotation = lookRotation;
+        // Smoothly rotate from the current rotation towards the target rotation.
+        enemyAI.transform.rotation = Quaternion.RotateTowards(
+            enemyAI.transform.rotation,
+            lookRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
 }
