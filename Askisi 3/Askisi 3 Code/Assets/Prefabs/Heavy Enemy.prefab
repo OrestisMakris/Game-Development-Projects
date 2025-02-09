@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 289611158194171924}
   - component: {fileID: 835423183308294264}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Heavy Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4873307952468208167}
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6ac6312a1ee64bf4a86759dde089488d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f2bd53a7304214bb834d580388ebad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   obstacleRange: 1
   fireballPrefab: {fileID: 1284065075769622593, guid: 99d7d5a96a73bec4f9726632f859167a, type: 3}
 --- !u!114 &835423183308294264
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437676df12121cd42a8b76c4e4fe062b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FovBox: {fileID: 2446746465040737066}
+  FovBox: {fileID: 0}
+  health: 200
 --- !u!1001 &4912247134910762444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,11 +147,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
       propertyPath: m_LocalScale.x
-      value: 450
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
       propertyPath: m_LocalScale.y
-      value: 100
+      value: 66.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
       propertyPath: m_LocalScale.z

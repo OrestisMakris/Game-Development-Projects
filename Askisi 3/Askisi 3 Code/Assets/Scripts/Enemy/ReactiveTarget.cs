@@ -7,7 +7,7 @@ using UnityEngine;
 public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] FOV FovBox;
-    private int health;
+    [SerializeField] private int health = 100;
 
     public void ReactToHit(int damage)
     {
@@ -26,7 +26,7 @@ public class ReactiveTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 100;
+        //health = 100;
     }
 
     private IEnumerator Die()
