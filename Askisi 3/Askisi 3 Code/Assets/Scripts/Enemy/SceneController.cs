@@ -10,18 +10,21 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemy = Instantiate(enemyPrefab);
+        enemy.transform.position = new Vector3(-20, 1, 0);
+        float angle = Random.Range(0, 360);
+        enemy.transform.Rotate(0, angle, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemy == null)
+        /*if (enemy == null)
         {
             enemy = Instantiate(enemyPrefab);
             enemy.transform.position = new Vector3(-20, 1, 0);
             float angle = Random.Range(0, 360);
             enemy.transform.Rotate(0, angle, 0);
-        }
+        }*/
     }
 }

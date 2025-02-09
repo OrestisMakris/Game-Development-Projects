@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFireball : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 15.0f;
     public int damage = 5;
     // Start is called before the first frame update
     void Start()
@@ -20,10 +20,12 @@ public class PlayerFireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        PointClickMovement player = other.GetComponent<PointClickMovement>();
-        if (player != null)
+        // Check if the collided object has a ReactiveTarget component (enemy)
+        ReactiveTarget enemy = other.GetComponent<ReactiveTarget>();
+        if (enemy != null)
         {
-            Managers.Player.ChangeHealth(-damage);
+            // Damage the enemy
+            enemy.ReactToHit(damage);
         }
         Destroy(this.gameObject);
     }

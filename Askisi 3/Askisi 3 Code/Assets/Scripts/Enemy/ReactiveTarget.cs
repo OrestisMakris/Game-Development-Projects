@@ -9,9 +9,9 @@ public class ReactiveTarget : MonoBehaviour
     [SerializeField] FOV FovBox;
     private int health;
 
-    public void ReactToHit()
+    public void ReactToHit(int damage)
     {
-        health -= 1;
+        health -= damage;
         StartCoroutine(GetHurt());
         if (health < 1)
         {
@@ -26,7 +26,7 @@ public class ReactiveTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 3;
+        health = 100;
     }
 
     private IEnumerator Die()
