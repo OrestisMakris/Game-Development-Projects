@@ -60,8 +60,13 @@ public class FOV : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // Check if the ray hit the player
-            if (hit.collider.GetComponent<PointClickMovement>() != null)
+            // Check if the hit object is the player's shield.
+            ShieldController shield = hit.collider.GetComponent<ShieldController>();
+
+            // Check if the hit object is the player.
+            PointClickMovement player = hit.collider.GetComponent<PointClickMovement>();
+
+            if (shield != null || player != null)
             {
                 if (hit.distance < maxDistance)
                 {

@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class ShieldController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float shieldDuration = 3f;
+    [SerializeField] private GameObject shieldVisual;
+    private CapsuleCollider shieldCollider;
+
+    private void Awake()
     {
-        
+        shieldCollider = GetComponent<CapsuleCollider>();
+        DeactivateShield();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ActivateShield()
     {
-        
+        shieldVisual.SetActive(true);
+        shieldCollider.enabled = true;
+        Invoke(nameof(DeactivateShield), shieldDuration);
+    }
+
+    private void DeactivateShield()
+    {
+        shieldVisual.SetActive(false);
+        shieldCollider.enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyFireball"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

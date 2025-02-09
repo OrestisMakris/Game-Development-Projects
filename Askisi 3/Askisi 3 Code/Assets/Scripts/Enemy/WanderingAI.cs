@@ -41,7 +41,14 @@ public class WanderingAI : MonoBehaviour
         if (Physics.SphereCast(ray, 0.75f, out hit))
         {
             GameObject hitObject = hit.transform.gameObject;
-            if (hitObject.GetComponent<PointClickMovement>())
+
+            // Check if the hit object is the player's shield.
+            ShieldController shield = hitObject.GetComponent<ShieldController>();
+
+            // Check if the hit object is the player.
+            PointClickMovement player = hitObject.GetComponent<PointClickMovement>();
+
+            if (shield != null || player != null)
             {
                 if (fireball == null)
                 {

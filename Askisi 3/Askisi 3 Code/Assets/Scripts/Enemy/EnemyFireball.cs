@@ -6,10 +6,11 @@ public class EnemyFireball : MonoBehaviour
 {
     public float speed = 10.0f;
     public int damage = 5;
-    // Start is called before the first frame update
+    private UseShield playerShield;
+
     void Start()
     {
-
+        playerShield = FindObjectOfType<UseShield>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,14 @@ public class EnemyFireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Check if the fireball hit the player shield first
+        if (playerShield != null && playerShield.IsShieldActive())
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // If the shield is not active, check if the fireball hit the player
         PointClickMovement player = other.GetComponent<PointClickMovement>();
         if (player != null)
         {
