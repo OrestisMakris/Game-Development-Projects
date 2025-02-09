@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Rider.Unity.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,7 +6,9 @@ public class PointClickMovement : MonoBehaviour
 {
     [SerializeField] Transform target;
 
-    public float moveSpeed = 6.0f;
+    [SerializeField] private float walkSpeed = 3.0f;  // Default walk speed
+    [SerializeField] private float runSpeed = 8.0f;   // Increased run speed
+    private float curSpeed = 0f;  // Current speed
     public float rotSpeed = 15.0f;
     public float gravity = -9.8f;
     public float terminalVelocity = -20.0f;
@@ -18,7 +17,7 @@ public class PointClickMovement : MonoBehaviour
     public float deceleration = 25.0f;
     public float targetBuffer = 1.5f;
 
-    private float curSpeed = 0f;
+
     private Vector3? targetPos;
 
     private float vertSpeed;
@@ -60,7 +59,15 @@ public class PointClickMovement : MonoBehaviour
                     if (!hitInfo.collider.CompareTag("PlayerShield"))
                     {
                         targetPos = hitInfo.point;
-                        curSpeed = moveSpeed;
+                        // Check if Shift is held down at the moment of click.
+                        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                        {
+                            curSpeed = runSpeed;
+                        }
+                        else
+                        {
+                            curSpeed = walkSpeed;
+                        }
                         break;
                     }
                 }
@@ -69,7 +76,8 @@ public class PointClickMovement : MonoBehaviour
 
         if (targetPos != null)
         {
-            if (curSpeed > (moveSpeed * 0.5f))
+            // Rotate smoothly toward the target
+            if (curSpeed > (walkSpeed * 0.5f))
             {
                 Vector3 adjustedPos = new Vector3(targetPos.Value.x, transform.position.y, targetPos.Value.z);
                 Quaternion targetRot = Quaternion.LookRotation(adjustedPos - transform.position);
@@ -122,11 +130,11 @@ public class PointClickMovement : MonoBehaviour
             {
                 if (Vector3.Dot(movement, contact.normal) < 0)
                 {
-                    movement = contact.normal * moveSpeed;
+                    movement = contact.normal * walkSpeed;
                 }
                 else
                 {
-                    movement += contact.normal * moveSpeed;
+                    movement += contact.normal * walkSpeed;
                 }
             }
         }

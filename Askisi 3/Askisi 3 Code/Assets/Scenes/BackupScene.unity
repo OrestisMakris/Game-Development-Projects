@@ -4014,7 +4014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1761674493}
-  moveSpeed: 6
+  walkSpeed: 2
+  runSpeed: 8
   rotSpeed: 15
   gravity: -9.8
   terminalVelocity: -20
@@ -4035,7 +4036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 1284065075769622593, guid: 3247ae49d1b953645b005beb0f179722, type: 3}
-  rotationSpeed: 10
+  rotationSpeed: 720
 --- !u!114 &1158620708
 MonoBehaviour:
   m_ObjectHideFlags: 0
