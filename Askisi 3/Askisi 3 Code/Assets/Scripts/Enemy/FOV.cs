@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FOV : MonoBehaviour
@@ -11,8 +9,12 @@ public class FOV : MonoBehaviour
     private float maxDistance = 5.0f;
     private float rotationSpeed = 90f; // Controls how fast the enemy rotates (degrees per second)
 
+    public MeshRenderer fovMeshRenderer; // Reference to the mesh renderer
+
     void Start()
     {
+        fovMeshRenderer.enabled = false; // Hide the mesh on start
+
         // Find the player object in the scene by locating the PlayerCharacter component
         PointClickMovement player = FindObjectOfType<PointClickMovement>();
         if (player != null)
@@ -21,13 +23,17 @@ public class FOV : MonoBehaviour
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>() && playerTransform != null)
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player && playerTransform != null || shield && playerTransform != null)
         {
             if (HasLineOfSight())
             {
                 Debug.Log("Player entered FOV and is in line of sight");
+                fovMeshRenderer.enabled = true; // Show the mesh when the player enters the FOV
                 RotateTowardsPlayer();
             }
         }
@@ -35,10 +41,13 @@ public class FOV : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>() && playerTransform != null)
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player && playerTransform != null || shield && playerTransform != null)
         {
             if (HasLineOfSight())
             {
+                fovMeshRenderer.enabled = true; // Show the mesh when the player is in the FOV
                 RotateTowardsPlayer();
             }
         }
@@ -46,9 +55,12 @@ public class FOV : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>())
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player || shield)
         {
             Debug.Log("Player exited FOV");
+            fovMeshRenderer.enabled = false; // Hide the mesh when the player exits the FOV
             enemyAI.SetTooClose(false);
         }
     }
@@ -80,7 +92,6 @@ public class FOV : MonoBehaviour
                 return true; // No obstacles between enemy and player
             }
         }
-
         return false; // Obstacle detected
     }
 
@@ -98,4 +109,5 @@ public class FOV : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
     }
+
 }

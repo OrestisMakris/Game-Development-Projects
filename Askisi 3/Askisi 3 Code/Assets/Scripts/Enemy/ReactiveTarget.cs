@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
@@ -9,6 +7,15 @@ public class ReactiveTarget : MonoBehaviour
     [SerializeField] FOV FovBox;
     [SerializeField] private int health = 100;
 
+    private Renderer objectRenderer;
+    private Color originalColor;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        objectRenderer = GetComponent<Renderer>();
+        originalColor = objectRenderer.material.color; // Capture the original color of the object
+    }
     public void ReactToHit(int damage)
     {
         health -= damage;
@@ -23,11 +30,6 @@ public class ReactiveTarget : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        //health = 100;
-    }
 
     private IEnumerator Die()
     {
@@ -39,9 +41,8 @@ public class ReactiveTarget : MonoBehaviour
 
     private IEnumerator GetHurt()
     {
-        Renderer objectRenderer = GetComponent<Renderer>();
         objectRenderer.material.color = Color.red;
         yield return new WaitForSeconds(.1f);
-        objectRenderer.material.color = Color.white;
+        objectRenderer.material.color = originalColor;
     }
 }

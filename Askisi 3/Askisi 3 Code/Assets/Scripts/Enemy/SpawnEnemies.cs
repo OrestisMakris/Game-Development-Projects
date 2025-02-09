@@ -10,9 +10,10 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
+        // Spawn enemies at specific locations
         SpawnEnemy(normalEnemyPrefab, new Vector3(-20, 1, 0));
-        SpawnEnemy(heavyEnemyPrefab, new Vector3(-10, 1, 0));
-        SpawnEnemy(lightEnemyPrefab, new Vector3(0, 1, 0));
+        SpawnEnemy(heavyEnemyPrefab, new Vector3(-10, 1, -21));
+        SpawnEnemy(lightEnemyPrefab, new Vector3(18, 0.5f, -8));
     }
 
     // Update is called once per frame
@@ -27,7 +28,6 @@ public class SceneController : MonoBehaviour
         enemy.transform.position = position;
         float angle = Random.Range(0, 360);
         enemy.transform.Rotate(0, angle, 0);
-        
 
     }
 }

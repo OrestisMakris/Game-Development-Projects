@@ -32,35 +32,36 @@ public class WanderingAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAlive && (!isTooClose))
+        if (isAlive)
         {
-            transform.Translate(0, 0, speed * Time.deltaTime);
-        }
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        if (Physics.SphereCast(ray, 0.75f, out hit))
-        {
-            GameObject hitObject = hit.transform.gameObject;
+            if (!isTooClose) transform.Translate(0, 0, speed * Time.deltaTime);
 
-            // Check if the hit object is the player's shield.
-            ShieldController shield = hitObject.GetComponent<ShieldController>();
-
-            // Check if the hit object is the player.
-            PointClickMovement player = hitObject.GetComponent<PointClickMovement>();
-
-            if (shield != null || player != null)
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if (Physics.SphereCast(ray, 0.75f, out hit))
             {
-                if (fireball == null)
+                GameObject hitObject = hit.transform.gameObject;
+
+                // Check if the hit object is the player's shield.
+                ShieldController shield = hitObject.GetComponent<ShieldController>();
+
+                // Check if the hit object is the player.
+                PointClickMovement player = hitObject.GetComponent<PointClickMovement>();
+
+                if (shield != null || player != null)
                 {
-                    fireball = Instantiate(fireballPrefab);
-                    fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
-                    fireball.transform.rotation = transform.rotation;
+                    if (fireball == null)
+                    {
+                        fireball = Instantiate(fireballPrefab);
+                        fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
+                        fireball.transform.rotation = transform.rotation;
+                    }
                 }
-            }
-            if (hit.distance < obstacleRange)
-            {
-                float angle = Random.Range(-110, 110);
-                transform.Rotate(0, angle, 0);
+                if (hit.distance < obstacleRange)
+                {
+                    float angle = Random.Range(-110, 110);
+                    transform.Rotate(0, angle, 0);
+                }
             }
         }
     }
