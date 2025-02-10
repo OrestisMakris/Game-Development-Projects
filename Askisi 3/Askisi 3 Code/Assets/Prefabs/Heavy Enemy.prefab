@@ -163,7 +163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -278,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 289611158194171924}
   fovMeshRenderer: {fileID: 6046745642291417416}
-  meshCheckInterval: 0.2
 --- !u!23 &6046745642291417416 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8436e42135fc140439743d8ffa29ea85, type: 3}
