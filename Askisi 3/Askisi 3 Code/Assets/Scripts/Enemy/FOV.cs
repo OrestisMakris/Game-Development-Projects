@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FOV : MonoBehaviour
@@ -9,9 +7,14 @@ public class FOV : MonoBehaviour
     private Transform playerTransform;
 
     private float maxDistance = 5.0f;
+    private float rotationSpeed = 90f; // Controls how fast the enemy rotates (degrees per second)
+
+    public MeshRenderer fovMeshRenderer; // Reference to the mesh renderer
 
     void Start()
     {
+        fovMeshRenderer.enabled = false; // Hide the mesh on start
+
         // Find the player object in the scene by locating the PlayerCharacter component
         PointClickMovement player = FindObjectOfType<PointClickMovement>();
         if (player != null)
@@ -20,13 +23,17 @@ public class FOV : MonoBehaviour
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>() && playerTransform != null)
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player && playerTransform != null || shield && playerTransform != null)
         {
             if (HasLineOfSight())
             {
                 Debug.Log("Player entered FOV and is in line of sight");
+                fovMeshRenderer.enabled = true; // Show the mesh when the player enters the FOV
                 RotateTowardsPlayer();
             }
         }
@@ -34,10 +41,13 @@ public class FOV : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>() && playerTransform != null)
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player && playerTransform != null || shield && playerTransform != null)
         {
             if (HasLineOfSight())
             {
+                fovMeshRenderer.enabled = true; // Show the mesh when the player is in the FOV
                 RotateTowardsPlayer();
             }
         }
@@ -45,9 +55,12 @@ public class FOV : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<PointClickMovement>())
+        PointClickMovement player = other.GetComponent<PointClickMovement>();
+        ShieldController shield = other.GetComponent<ShieldController>();
+        if (player || shield)
         {
             Debug.Log("Player exited FOV");
+            fovMeshRenderer.enabled = false; // Hide the mesh when the player exits the FOV
             enemyAI.SetTooClose(false);
         }
     }
@@ -60,8 +73,13 @@ public class FOV : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // Check if the ray hit the player
-            if (hit.collider.GetComponent<PointClickMovement>() != null)
+            // Check if the hit object is the player's shield.
+            ShieldController shield = hit.collider.GetComponent<ShieldController>();
+
+            // Check if the hit object is the player.
+            PointClickMovement player = hit.collider.GetComponent<PointClickMovement>();
+
+            if (shield != null || player != null)
             {
                 if (hit.distance < maxDistance)
                 {
@@ -74,7 +92,6 @@ public class FOV : MonoBehaviour
                 return true; // No obstacles between enemy and player
             }
         }
-
         return false; // Obstacle detected
     }
 
@@ -85,7 +102,12 @@ public class FOV : MonoBehaviour
         direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-        // Set the enemy's rotation instantly to face the player
-        enemyAI.transform.rotation = lookRotation;
+        // Smoothly rotate from the current rotation towards the target rotation.
+        enemyAI.transform.rotation = Quaternion.RotateTowards(
+            enemyAI.transform.rotation,
+            lookRotation,
+            rotationSpeed * Time.deltaTime
+        );
     }
+
 }
