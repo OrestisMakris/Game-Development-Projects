@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DashCooldownUI : MonoBehaviour
 {
     [SerializeField] private Image dashIcon; // Assign the Dash UI Icon Image
-    [SerializeField] private UseDash useDash; // Reference to UseDash script
+    [SerializeField] private UseDash useDash; // To get the dash cooldown
 
     private Coroutine cooldownRoutine;
 

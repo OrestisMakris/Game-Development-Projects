@@ -717,9 +717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcc8b81ea05acb46a96e01347b7378d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalEnemyPrefab: {fileID: 0}
-  heavyEnemyPrefab: {fileID: 0}
-  lightEnemyPrefab: {fileID: 0}
+  normalEnemyPrefab: {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  heavyEnemyPrefab: {fileID: 4892410892991233353, guid: 640c9a77a154c8b42bb75cc523b1701c, type: 3}
+  lightEnemyPrefab: {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
 --- !u!1 &134573545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,7 +2636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldIcon: {fileID: 794374780}
-  useShield: {fileID: 1158620707}
 --- !u!114 &794374780
 MonoBehaviour:
   m_ObjectHideFlags: 0

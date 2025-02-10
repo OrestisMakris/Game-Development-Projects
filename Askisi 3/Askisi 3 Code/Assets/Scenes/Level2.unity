@@ -717,9 +717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcc8b81ea05acb46a96e01347b7378d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalEnemyPrefab: {fileID: 0}
-  heavyEnemyPrefab: {fileID: 0}
-  lightEnemyPrefab: {fileID: 0}
+  normalEnemyPrefab: {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  heavyEnemyPrefab: {fileID: 4892410892991233353, guid: 640c9a77a154c8b42bb75cc523b1701c, type: 3}
+  lightEnemyPrefab: {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
 --- !u!1 &148980743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,6 +3767,51 @@ MonoBehaviour:
   deceleration: 25
   targetBuffer: 1.5
   pushForce: 3
+--- !u!114 &1158620706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55662e07086193b4d927f488ec63ce95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
+  dashDuration: 0.3
+  dashCooldown: 5
+  dashCooldownUI: {fileID: 2057959543}
+--- !u!114 &1158620707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775c08a0b8a84cf43863e8e9c76a15cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldPrefab: {fileID: 9200802869383422087, guid: e3444f30fa96afc41a72c0f72c3bc627, type: 3}
+  shieldCooldown: 5
+  shieldCooldownUI: {fileID: 1720246800}
+--- !u!114 &1158620708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158620698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e494fe293053645ac21d663f28f26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 1284065075769622593, guid: 3247ae49d1b953645b005beb0f179722, type: 3}
+  rotationSpeed: 720
 --- !u!1 &1158699599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5106,6 +5151,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1158620705}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620708}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620707}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158620706}
     - targetCorrespondingSourceObject: {fileID: -4819223349682164798, guid: 1c2104bbb6fbfa24598fb123d7fff855, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1250800788}
@@ -5577,7 +5631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldIcon: {fileID: 1720246801}
-  useShield: {fileID: 0}
 --- !u!114 &1720246801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6981,7 +7034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashIcon: {fileID: 2057959544}
-  useDash: {fileID: 0}
+  useDash: {fileID: 1158620706}
 --- !u!114 &2057959544
 MonoBehaviour:
   m_ObjectHideFlags: 0
