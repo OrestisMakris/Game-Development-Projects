@@ -5,7 +5,7 @@ public class DoorOpenDevice : MonoBehaviour
 {
     [SerializeField] private Vector3 dPos;
     private bool open;
-    [SerializeField] private float duration = 1f; // Duration of the tween
+    [SerializeField] private float duration = 2f; // Duration of the tween
 
     // Operates the door based on its current state
     public void Operate()
