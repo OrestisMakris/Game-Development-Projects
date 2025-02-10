@@ -7,7 +7,9 @@ public class ShieldController : MonoBehaviour
     [SerializeField] private float shieldDuration = 3f;
     [SerializeField] private GameObject shieldVisual;
     private CapsuleCollider shieldCollider;
-    private ShieldCooldownUI shieldCooldownUI;
+
+    private UseShield useShield; // To check if shield is used and start cooldown
+    private ShieldCooldownUI shieldCooldownUI; // To start UI cooldown effect
     public bool isShieldActive = false;
 
     private void Awake()
@@ -18,18 +20,22 @@ public class ShieldController : MonoBehaviour
 
     public void ActivateShield()
     {
-        shieldVisual.SetActive(true);
-        shieldCollider.enabled = true;
-        isShieldActive = true;
-        Invoke(nameof(DeactivateShield), shieldDuration);
+        if (!useShield.IsShieldUsed())
+        {
+            shieldVisual.SetActive(true);
+            shieldCollider.enabled = true;
+            isShieldActive = true;
+            Invoke(nameof(DeactivateShield), shieldDuration);
+        }
     }
 
     private void DeactivateShield()
     {
+        useShield.StartCooldown(); // Reset shield after cooldown
+        shieldCooldownUI.StartCooldown(useShield.GetShieldCooldown()); // Start UI cooldown effect
         shieldVisual.SetActive(false);
         shieldCollider.enabled = false;
         isShieldActive = false;
-        shieldCooldownUI.StartCooldown(); // Start UI cooldown effect
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,9 +46,14 @@ public class ShieldController : MonoBehaviour
         }
     }
 
-    public void SetCooldownUI(ShieldCooldownUI cooldownUI)
+    public void SetUseShield(UseShield useShield)
     {
-        shieldCooldownUI = cooldownUI;
+        this.useShield = useShield;
+    }
+
+    public void SetShieldCooldownUI(ShieldCooldownUI shieldCooldownUI)
+    {
+        this.shieldCooldownUI = shieldCooldownUI;
     }
 
 }

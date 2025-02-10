@@ -14,21 +14,31 @@ public class UseShield : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && isShieldReady)
         {
-            ActivateShield();
+            ShieldUsed();
         }
     }
 
-    private void ActivateShield()
+    private void ShieldUsed()
     {
         if (currentShield == null)
         {
             GameObject shieldObj = Instantiate(shieldPrefab, transform.position, Quaternion.identity, transform);
             currentShield = shieldObj.GetComponent<ShieldController>();
-            currentShield.SetCooldownUI(shieldCooldownUI); // Set the cooldown UI reference
+            if (currentShield != null)
+            {
+                currentShield.SetUseShield(this);
+                currentShield.SetShieldCooldownUI(shieldCooldownUI);
+                // currentShield.useShield = this;
+                // currentShield.shieldCooldownUI = shieldCooldownUI;
+            }
         }
 
         currentShield.ActivateShield();
         isShieldReady = false;
+    }
+
+    public void StartCooldown()
+    {
         Invoke(nameof(ResetShield), shieldCooldown); // Reset shield after cooldown
     }
 
@@ -37,12 +47,12 @@ public class UseShield : MonoBehaviour
         isShieldReady = true;
     }
 
-    public bool IsShieldActive()
+    public bool IsShieldUsed()
     {
-        return currentShield != null && currentShield.isShieldActive;
+        return currentShield != null && !isShieldReady;
     }
 
-    // Shield cooldown gette
+    // Shield cooldown getter
     public float GetShieldCooldown()
     {
         return shieldCooldown;

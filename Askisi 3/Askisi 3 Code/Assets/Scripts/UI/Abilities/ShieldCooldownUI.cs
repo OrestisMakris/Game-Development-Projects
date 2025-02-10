@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class ShieldCooldownUI : MonoBehaviour
 {
     [SerializeField] private Image shieldIcon; // Assign the Shield UI Icon Image
-    [SerializeField] private UseShield useShield; // Reference to UseShield script
 
     private Coroutine cooldownRoutine;
 
@@ -14,15 +13,15 @@ public class ShieldCooldownUI : MonoBehaviour
         ResetCooldownUI();
     }
 
-    public void StartCooldown()
+    public void StartCooldown(float shieldCooldown)
     {
         if (cooldownRoutine != null) StopCoroutine(cooldownRoutine);
-        cooldownRoutine = StartCoroutine(CooldownRoutine());
+        cooldownRoutine = StartCoroutine(CooldownRoutine(shieldCooldown));
     }
 
-    private IEnumerator CooldownRoutine()
+    private IEnumerator CooldownRoutine(float shieldCooldown)
     {
-        float shieldCooldown = useShield.GetShieldCooldown(); // Get cooldown dynamically
+        //float shieldCooldown = useShield.GetShieldCooldown(); // Get cooldown dynamically
 
         shieldIcon.fillAmount = 0; // Start with an empty cooldown circle
         shieldIcon.color = new Color(1, 1, 1, 0.3f); // Make it transparent initially
