@@ -6,9 +6,14 @@ public class ReactiveTarget : MonoBehaviour
 {
     [SerializeField] FOV FovBox;
     [SerializeField] private int health = 100;
-
+    // Add audio clips for hit and death sounds
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip deathSound;
+    
     private Renderer objectRenderer;
     private Color originalColor;
+    // Removed local AudioSource since AudioManager is used now.
+    // private AudioSource audioSource;
 
     private Transform playerTransform; // Reference to the player's transform
     private float rotationSpeed = 360f; // Controls how fast the enemy rotates (degrees per second)
@@ -18,6 +23,7 @@ public class ReactiveTarget : MonoBehaviour
     {
         objectRenderer = GetComponent<Renderer>();
         originalColor = objectRenderer.material.color; // Capture the original color of the object
+        // No longer needed: audioSource = GetComponent<AudioSource>();
 
         // Find the player object in the scene by locating the PlayerCharacter component
         PointClickMovement player = FindObjectOfType<PointClickMovement>();
@@ -26,9 +32,16 @@ public class ReactiveTarget : MonoBehaviour
             playerTransform = player.transform;
         }
     }
+
     public void ReactToHit(int damage)
     {
         health -= damage;
+
+        // Play hit sound using AudioManager
+        if (hitSound != null)
+        {
+            AudioManager.Instance.PlaySound(hitSound);
+        }
 
         // Rotate towards the player
         if (playerTransform != null)
@@ -50,6 +63,11 @@ public class ReactiveTarget : MonoBehaviour
 
     private IEnumerator Die()
     {
+        // Play death sound using AudioManager
+        if (deathSound != null)
+        {
+            AudioManager.Instance.PlaySound(deathSound);
+        }
         this.transform.Rotate(-75, 0, 0);
         FovBox.gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);

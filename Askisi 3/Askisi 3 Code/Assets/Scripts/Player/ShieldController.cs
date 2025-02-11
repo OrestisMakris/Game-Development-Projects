@@ -6,16 +6,21 @@ public class ShieldController : MonoBehaviour
 {
     [SerializeField] private float shieldDuration = 3f;
     [SerializeField] private GameObject shieldVisual;
-    private CapsuleCollider shieldCollider;
+    [SerializeField] private AudioClip shieldSound; // Shield activation sound
 
-    private UseShield useShield; // To check if shield is used and start cooldown
-    private ShieldCooldownUI shieldCooldownUI; // To start UI cooldown effect
+    private CapsuleCollider shieldCollider;
+    private UseShield useShield;
+    private ShieldCooldownUI shieldCooldownUI;
     public bool isShieldActive = false;
 
     private void Awake()
     {
         isShieldActive = false;
         shieldCollider = GetComponent<CapsuleCollider>();
+        if(GetComponent<AudioSource>() == null)
+        {
+            gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public void ActivateShield()
@@ -25,14 +30,20 @@ public class ShieldController : MonoBehaviour
             shieldVisual.SetActive(true);
             shieldCollider.enabled = true;
             isShieldActive = true;
+            
+            if(shieldSound != null)
+            {
+                AudioManager.Instance.PlaySound(shieldSound);
+            }
+            
             Invoke(nameof(DeactivateShield), shieldDuration);
         }
     }
 
     private void DeactivateShield()
     {
-        useShield.StartCooldown(); // Reset shield after cooldown
-        shieldCooldownUI.StartCooldown(useShield.GetShieldCooldown()); // Start UI cooldown effect
+        useShield.StartCooldown();
+        shieldCooldownUI.StartCooldown(useShield.GetShieldCooldown());
         shieldVisual.SetActive(false);
         shieldCollider.enabled = false;
         isShieldActive = false;
@@ -55,5 +66,4 @@ public class ShieldController : MonoBehaviour
     {
         this.shieldCooldownUI = shieldCooldownUI;
     }
-
 }

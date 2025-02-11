@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   damage: 5
+  shootSound: {fileID: 8300000, guid: 919e7e39d95141647a25ec92eb309967, type: 3}
