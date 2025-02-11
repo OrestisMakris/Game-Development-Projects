@@ -6,10 +6,16 @@ public class PlayerFireball : MonoBehaviour
 {
     public float speed = 15.0f;
     public int damage = 5;
+    [SerializeField] private AudioClip shootSound; // Fireball shoot sound
+
     // Start is called before the first frame update
     void Start()
     {
-
+        // Play sound when the fireball is spawned via AudioManager
+        if(shootSound != null)
+        {
+            AudioManager.Instance.PlaySound(shootSound, 0.05f);
+        }
     }
 
     // Update is called once per frame
@@ -20,19 +26,15 @@ public class PlayerFireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the collided object is the player's shield
         if (other.GetComponent<ShieldController>() != null)
         {
-            return; // Ignore the collision 
+            return;
         }
-        // Check if the collided object has a ReactiveTarget component (enemy)
         ReactiveTarget enemy = other.GetComponent<ReactiveTarget>();
         if (enemy != null)
         {
-            // Damage the enemy
             enemy.ReactToHit(damage);
         }
         Destroy(this.gameObject);
     }
 }
-

@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 289611158194171924}
   - component: {fileID: 835423183308294264}
   m_Layer: 0
-  m_Name: Heavy Enemy
+  m_Name: Heavy Enemyy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FovBox: {fileID: 2446746465040737066}
   health: 200
+  hitSound: {fileID: 8300000, guid: 62bea0d8b02159f418d1daf714a7261d, type: 3}
+  deathSound: {fileID: 8300000, guid: 13107e09ba7f7fd439478a809bdb52a1, type: 3}
 --- !u!1001 &4912247134910762444
 PrefabInstance:
   m_ObjectHideFlags: 0
