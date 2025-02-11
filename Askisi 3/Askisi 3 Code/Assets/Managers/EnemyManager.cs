@@ -6,13 +6,11 @@ public class EnemyManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Vector3[] spawnPositions;
-    //private int currentEnemyCount;
     private int enemiesKilledCount;
     private int totalEnemyCount;
 
     // Expose counts for UI updates
     public int TotalEnemyCount { get { return totalEnemyCount; } }
-    //public int CurrentEnemyCount { get { return currentEnemyCount; } }
     public int EnemiesKilledCount { get { return enemiesKilledCount; } }
 
     private void Awake()
@@ -48,14 +46,13 @@ public class EnemyManager : MonoBehaviour, IGameManager
         enemy.transform.position = spawnPos;
         float angle = Random.Range(0, 360);
         enemy.transform.Rotate(0, angle, 0);
-        // Each enemy calls NotifyEnemyDefeated in the ReactiveTarget script when defeated
     }
 
-    // Called by enemy scripts when they are defeated.
+    // Called by enemy the enemies ReactiveTarget script when they are defeated.
     public void NotifyEnemyDefeated()
     {
         enemiesKilledCount++;
-        // Broadcast enemy count update with no parameters.
+        // Broadcast enemy count update.
         Messenger.Broadcast(GameEvent.ENEMY_COUNT_UPDATED);
         if (enemiesKilledCount >= totalEnemyCount)
         {
