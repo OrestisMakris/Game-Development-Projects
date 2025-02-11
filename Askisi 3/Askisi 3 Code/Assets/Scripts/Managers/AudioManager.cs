@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Main Music Settings")]
     [SerializeField] private AudioClip mainMusic;       // Main music clip
-    [SerializeField, Range(0f, 1f)] private float mainMusicVolume = 0.08f; // Default volume for main music
+    [SerializeField, Range(0f, 1f)] private float mainMusicVolume = 0.1f; // Default volume for main music
 
     [Header("SFX Settings")]
     [SerializeField, Range(0f, 1f)] private float sfxVolume = 1f; // Default volume for sound effects

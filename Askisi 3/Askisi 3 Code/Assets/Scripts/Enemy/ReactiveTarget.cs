@@ -40,7 +40,7 @@ public class ReactiveTarget : MonoBehaviour
         // Play hit sound using AudioManager
         if (hitSound != null)
         {
-            AudioManager.Instance.PlaySound(hitSound);
+            AudioManager.Instance.PlaySound(hitSound, 0.4f);
         }
 
         // Rotate towards the player
@@ -66,7 +66,7 @@ public class ReactiveTarget : MonoBehaviour
         // Play death sound using AudioManager
         if (deathSound != null)
         {
-            AudioManager.Instance.PlaySound(deathSound);
+            AudioManager.Instance.PlaySound(deathSound, 0.1f);
         }
         this.transform.Rotate(-75, 0, 0);
         FovBox.gameObject.SetActive(false);

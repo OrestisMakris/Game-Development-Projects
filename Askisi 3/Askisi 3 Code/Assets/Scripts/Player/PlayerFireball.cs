@@ -14,7 +14,7 @@ public class PlayerFireball : MonoBehaviour
         // Play sound when the fireball is spawned via AudioManager
         if(shootSound != null)
         {
-            AudioManager.Instance.PlaySound(shootSound, 0.06f);
+            AudioManager.Instance.PlaySound(shootSound, 0.05f);
         }
     }
 
