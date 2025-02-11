@@ -148,3 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   damage: 5
+  enemyShootSound: {fileID: 8300000, guid: 919e7e39d95141647a25ec92eb309967, type: 3}
+  playerHitSound: {fileID: 8300000, guid: 4da2f827c4619044dad0bd2ee624a5d1, type: 3}

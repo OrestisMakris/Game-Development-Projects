@@ -6,6 +6,9 @@ public class PlayerManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
     public int health { get; private set; }
     public int maxHealth { get; private set; }
+
+    [SerializeField] private AudioClip healthIncreaseSound; // Sound played when health increases
+
     public void Startup()
     {
         Debug.Log("Player manager starting...");
@@ -21,15 +24,24 @@ public class PlayerManager : MonoBehaviour, IGameManager
 
     public void ChangeHealth(int value)
     {
+        int oldHealth = health;
         health += value;
         if (health > maxHealth)
         {
             health = maxHealth;
         }
-
         else if (health < 0)
         {
             health = 0;
+        }
+        
+        // Play health increase sound if the change was positive.
+        if (value > 0 && health > oldHealth)
+        {
+            if (healthIncreaseSound != null)
+            {
+                AudioManager.Instance.PlaySound(healthIncreaseSound);
+            }
         }
 
         if (health == 0)

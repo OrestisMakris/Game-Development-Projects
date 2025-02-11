@@ -8,9 +8,18 @@ public class EnemyFireball : MonoBehaviour
     public int damage = 5;
     private UseShield playerShield;
 
+    [SerializeField] private AudioClip enemyShootSound; // Sound played when the enemy shoots a fireball
+    [SerializeField] private AudioClip playerHitSound;    // Sound played when the player is hit
+
     void Start()
     {
         playerShield = FindObjectOfType<UseShield>();
+
+        // Play enemy shoot sound when the fireball is spawned
+        if (enemyShootSound != null)
+        {
+            AudioManager.Instance.PlaySound(enemyShootSound, 0.02f);
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +30,7 @@ public class EnemyFireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the fireball hit the player shield first
+        // Check if the fireball hit the player's shield first
         if (playerShield.IsShieldUsed())
         {
             Destroy(gameObject);
@@ -32,8 +41,14 @@ public class EnemyFireball : MonoBehaviour
         PointClickMovement player = other.GetComponent<PointClickMovement>();
         if (player != null)
         {
+            // Play player hit sound
+            if (playerHitSound != null)
+            {
+                AudioManager.Instance.PlaySound(playerHitSound, 0.5f);
+            }
+            
             Managers.Player.ChangeHealth(-damage);
         }
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
