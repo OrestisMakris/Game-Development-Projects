@@ -13,6 +13,8 @@ public class WanderingAI : MonoBehaviour
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;
 
+    //[SerializeField] LayerMask obstacleLayer;
+
     public bool IsTooClose // Property to access isTooClose
     {
         get { return isTooClose; } // Only provide a getter 
@@ -34,6 +36,12 @@ public class WanderingAI : MonoBehaviour
     {
         if (isAlive)
         {
+            // Fix any x axis rotation
+            Vector3 currentEuler = transform.rotation.eulerAngles;
+            currentEuler.x = 0;
+            transform.rotation = Quaternion.Euler(currentEuler);
+
+            // Move the enemy forward
             if (!isTooClose) transform.Translate(0, 0, speed * Time.deltaTime);
 
             Ray ray = new Ray(transform.position, transform.forward);
@@ -59,6 +67,7 @@ public class WanderingAI : MonoBehaviour
                 }
                 if (hit.distance < obstacleRange)
                 {
+                    // Rotate away from the obstacle
                     float angle = Random.Range(-110, 110);
                     transform.Rotate(0, angle, 0);
                 }
@@ -70,4 +79,17 @@ public class WanderingAI : MonoBehaviour
     {
         isAlive = alive;
     }
+
+    // Detect collisions with walls using triggers
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("Triggered with: " + other.gameObject.name);
+    //     // Check if the collided object is on the obstacleLayer
+    //     if (((1 << other.gameObject.layer) & obstacleLayer) != 0)
+    //     {
+    //         // Rotate away from the wall by a random angle between 135 and 225 degrees
+    //         float angle = Random.Range(135, 225);
+    //         transform.Rotate(0, angle, 0);
+    //     }
+    // }
 }

@@ -16,7 +16,7 @@ public class ReactiveTarget : MonoBehaviour
     // private AudioSource audioSource;
 
     private Transform playerTransform; // Reference to the player's transform
-    private float rotationSpeed = 360f; // Controls how fast the enemy rotates (degrees per second)
+    //private float rotationSpeed = 360f; // Controls how fast the enemy rotates (degrees per second)
 
     // Start is called before the first frame update
     void Start()
@@ -87,17 +87,18 @@ public class ReactiveTarget : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
 
         // Continue rotating until the angle difference is very small.
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        {
-            // RotateTowards gradually rotates the enemy's current rotation towards the target.
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
-            yield return null;
-        }
+        // while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        // {
+        //     // RotateTowards gradually rotates the enemy's current rotation towards the target.
+        //     transform.rotation = Quaternion.RotateTowards(
+        //         transform.rotation,
+        //         targetRotation,
+        //         rotationSpeed * Time.deltaTime
+        //     );
+        //     yield return null;
+        // }
         // Ensure the final rotation is set exactly.
         transform.rotation = targetRotation;
+        yield return null;
     }
 }
