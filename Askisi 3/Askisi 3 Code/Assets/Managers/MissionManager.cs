@@ -8,6 +8,7 @@ public class MissionManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
     public int curLevel { get; private set; }
     public int maxLevel { get; private set; }
+    private bool enemiesCleared = false;
 
     public void Startup()
     {
@@ -18,16 +19,41 @@ public class MissionManager : MonoBehaviour, IGameManager
         status = ManagerStatus.Started;
     }
 
+    // When the scene is loaded, spawn enemies for the current level
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // When the scene is loaded, spawn enemies for the current level
-        Managers.Enemies.SpawnEnemiesForLevel(curLevel);
+        // Reset enemy clearance before spawning new enemies
+        enemiesCleared = false;
+        // Find EnemyManager placed in the current level scene.
+        EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+        if (enemyManager != null)
+        {
+            enemyManager.SpawnEnemiesForLevel(curLevel);
+        }
     }
 
     private void OnDestroy()
     {
         // When the MissionManager is destroyed, unsubscribe from the sceneLoaded event
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnEnable()
+    {
+        // When the MissionManager is enabled, listen for the ENEMIES_DEFEATED event
+        Messenger.AddListener(GameEvent.ENEMIES_DEFEATED, OnEnemiesDefeated);
+    }
+
+    private void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.ENEMIES_DEFEATED, OnEnemiesDefeated);
+    }
+
+    private void OnEnemiesDefeated()
+    {
+        // When the ENEMIES_DEFEATED event is received, set enemiesCleared to true
+        enemiesCleared = true;
+        Debug.Log("All enemies in current level are defeated.");
     }
 
     public void GoToNext()
@@ -54,17 +80,21 @@ public class MissionManager : MonoBehaviour, IGameManager
 
     public void ReachObjective()
     {
+        // Only complete the level if all enemies are defeated
+        if (!enemiesCleared)
+        {
+            Debug.Log("Cannot complete level. Enemies are still present.");
+            return;
+        }
         // Broadcast level complete as usual
         Messenger.Broadcast(GameEvent.LEVEL_COMPLETE);
 
         if (curLevel < maxLevel)
         {
-            // Proceed to next level in UIController (or MissionManager) using the normal flow.
             Debug.Log("Objective reached. Proceeding to next level...");
         }
         else
         {
-            // Final level reached: show win message and restart the game after a delay.
             Debug.Log("You Won!");
             StartCoroutine(RestartGame());
         }

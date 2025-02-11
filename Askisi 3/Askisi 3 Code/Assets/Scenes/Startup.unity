@@ -474,7 +474,6 @@ GameObject:
   - component: {fileID: 1171467761}
   - component: {fileID: 1171467760}
   - component: {fileID: 1171467764}
-  - component: {fileID: 1171467765}
   m_Layer: 0
   m_Name: Game Managers
   m_TagString: Untagged
@@ -546,28 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ecd86489be0749bc2ac6a5c8f0f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1171467765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171467759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0bc7268c91184b498d6c9961d8a35a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
-  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
-  - {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
-  - {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
-  spawnPositions:
-  - {x: -18, y: 1, z: 3}
-  - {x: -16, y: 1, z: 22}
-  - {x: 16, y: 0.5, z: -10}
-  - {x: 15, y: 0.5, z: 8}
 --- !u!1 &1235092815
 GameObject:
   m_ObjectHideFlags: 0

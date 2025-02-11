@@ -9,7 +9,7 @@ public class ReactiveTarget : MonoBehaviour
     // Add audio clips for hit and death sounds
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip deathSound;
-    
+
     private Renderer objectRenderer;
     private Color originalColor;
     // Removed local AudioSource since AudioManager is used now.
@@ -71,6 +71,13 @@ public class ReactiveTarget : MonoBehaviour
         this.transform.Rotate(-75, 0, 0);
         FovBox.gameObject.SetActive(false);
         yield return new WaitForSeconds(1.5f);
+
+        // Notify the local EnemyManager that this enemy is defeated.
+        EnemyManager enemyManager = FindObjectOfType<EnemyManager>();
+        if (enemyManager != null)
+        {
+            enemyManager.NotifyEnemyDefeated();
+        }
         Destroy(this.gameObject);
     }
 
@@ -85,19 +92,6 @@ public class ReactiveTarget : MonoBehaviour
     {
         // Determine the target rotation so that the enemy faces the player.
         Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
-
-        // Continue rotating until the angle difference is very small.
-        // while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        // {
-        //     // RotateTowards gradually rotates the enemy's current rotation towards the target.
-        //     transform.rotation = Quaternion.RotateTowards(
-        //         transform.rotation,
-        //         targetRotation,
-        //         rotationSpeed * Time.deltaTime
-        //     );
-        //     yield return null;
-        // }
-        // Ensure the final rotation is set exactly.
         transform.rotation = targetRotation;
         yield return null;
     }
