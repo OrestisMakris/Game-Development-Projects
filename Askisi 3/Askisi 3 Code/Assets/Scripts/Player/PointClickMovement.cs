@@ -7,25 +7,23 @@ public class PointClickMovement : MonoBehaviour
     [SerializeField] Transform target;
 
     [SerializeField] private float walkSpeed = 3.0f;  // Default walk speed
-    [SerializeField] private float runSpeed = 8.0f;   // Increased run speed
-    private float curSpeed = 0f;  // Current speed
+    [SerializeField] private float runSpeed = 8.0f;     // Increased run speed
+    private float curSpeed = 0f;                        // Current speed
+
     public float rotSpeed = 15.0f;
     public float gravity = -9.8f;
     public float terminalVelocity = -20.0f;
     public float minFall = -1.5f;
-
     public float deceleration = 25.0f;
     public float targetBuffer = 1.5f;
 
+    [SerializeField] private float jumpForce = 16f;      // Upward force for jump
 
     private Vector3? targetPos;
-
     private float vertSpeed;
     private ControllerColliderHit contact;
-
     private CharacterController charController;
     private Animator animator;
-
     public float pushForce = 3.0f;
 
     // Use this for initialization
@@ -42,7 +40,7 @@ public class PointClickMovement : MonoBehaviour
         // start with zero and add movement components progressively
         Vector3 movement = Vector3.zero;
 
-        // Use RaycastAll to ignore the shield collider and find the floor target.
+        // Handle input to pick a target position
         if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -50,33 +48,25 @@ public class PointClickMovement : MonoBehaviour
 
             if (hits.Length > 0)
             {
-                // Sort the hits by distance.
+                // Sort hits by distance and ignore the player's shield
                 System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
 
-                // Pick the first hit that is not the player's shield.
                 foreach (RaycastHit hitInfo in hits)
                 {
                     if (!hitInfo.collider.CompareTag("PlayerShield"))
                     {
                         targetPos = hitInfo.point;
-                        // Check if Shift is held down at the moment of click.
-                        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-                        {
-                            curSpeed = runSpeed;
-                        }
-                        else
-                        {
-                            curSpeed = walkSpeed;
-                        }
+                        // Check if Shift is held down at click for running
+                        curSpeed = (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) ? runSpeed : walkSpeed;
                         break;
                     }
                 }
             }
         }
 
+        // Rotate smoothly toward the target if one exists
         if (targetPos != null)
         {
-            // Rotate smoothly toward the target
             if (curSpeed > (walkSpeed * 0.5f))
             {
                 Vector3 adjustedPos = new Vector3(targetPos.Value.x, transform.position.y, targetPos.Value.z);
@@ -87,6 +77,7 @@ public class PointClickMovement : MonoBehaviour
             movement = curSpeed * Vector3.forward;
             movement = transform.TransformDirection(movement);
 
+            // Deceleration when approaching the target
             if (Vector3.Distance(targetPos.Value, transform.position) < targetBuffer)
             {
                 curSpeed -= deceleration * Time.deltaTime;
@@ -98,7 +89,7 @@ public class PointClickMovement : MonoBehaviour
         }
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        // Raycast down to address steep slopes and drop-off edges.
+        // Determine if we are on the ground using a raycast
         bool hitGround = false;
         RaycastHit hit;
         if (vertSpeed < 0 && Physics.Raycast(transform.position, Vector3.down, out hit))
@@ -107,26 +98,34 @@ public class PointClickMovement : MonoBehaviour
             hitGround = hit.distance <= check;
         }
 
-        // y movement: possibly jump impulse up, always accelerate down
+        // Handle Jumping:
         if (hitGround)
         {
-            vertSpeed = minFall;
-            animator.SetBool("Jumping", false);
+            // When on the ground, allow jump on Space
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                vertSpeed = jumpForce; // Apply jump force
+                animator.SetBool("Jumping", true);
+            }
+            else
+            {
+                // If not jumping, ensure the character stays grounded
+                vertSpeed = minFall;
+                animator.SetBool("Jumping", false);
+            }
         }
         else
         {
+            // When in air, apply gravity
             vertSpeed += gravity * 5 * Time.deltaTime;
             if (vertSpeed < terminalVelocity)
             {
                 vertSpeed = terminalVelocity;
             }
-            if (contact != null)
-            {
-                animator.SetBool("Jumping", true);
-            }
+            animator.SetBool("Jumping", true);
 
-            // Workaround for standing on drop-off edge.
-            if (charController.isGrounded)
+            // Adjust movement when standing on drop-off edge.
+            if (charController.isGrounded && contact != null)
             {
                 if (Vector3.Dot(movement, contact.normal) < 0)
                 {
@@ -138,13 +137,13 @@ public class PointClickMovement : MonoBehaviour
                 }
             }
         }
-        movement.y = vertSpeed;
 
+        movement.y = vertSpeed;
         movement *= Time.deltaTime;
         charController.Move(movement);
     }
 
-    // Store collision to use in Update.
+    // Store collision information for use in Update.
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         contact = hit;
