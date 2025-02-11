@@ -8,7 +8,7 @@ public class MissionManager : MonoBehaviour, IGameManager
     public ManagerStatus status { get; private set; }
     public int curLevel { get; private set; }
     public int maxLevel { get; private set; }
-    private bool enemiesCleared = false;
+    public bool enemiesCleared = false;
 
     public void Startup()
     {

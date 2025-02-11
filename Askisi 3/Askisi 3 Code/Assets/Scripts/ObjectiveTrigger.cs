@@ -8,10 +8,13 @@ public class ObjectiveTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Play win sound using AudioManager
-        if (winSound != null)
+        // Only play winSound if all enemies have been cleared.
+        if (Managers.Mission != null && Managers.Mission.enemiesCleared)
         {
-            AudioManager.Instance.PlaySound(winSound);
+            if (winSound != null)
+            {
+                AudioManager.Instance.PlaySound(winSound);
+            }
         }
 
         Managers.Mission.ReachObjective();
