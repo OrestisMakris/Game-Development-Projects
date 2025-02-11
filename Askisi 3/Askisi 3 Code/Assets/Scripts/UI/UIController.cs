@@ -63,6 +63,7 @@ public class UIController : MonoBehaviour
     }
     private IEnumerator CompleteLevel()
     {
+        Managers.Inventory.RemoveKeys();
         levelEnding.gameObject.SetActive(true);
 
         // Check if the current level is the final one.

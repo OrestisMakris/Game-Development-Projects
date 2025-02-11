@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyFireball
   - PlayerShield
+  - Floor
   layers:
   - Default
   - TransparentFX

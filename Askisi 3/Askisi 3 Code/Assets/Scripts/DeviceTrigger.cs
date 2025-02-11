@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class DeviceTrigger : MonoBehaviour
 {
     [SerializeField] GameObject[] targets;
-
-    public bool requireKey;
+    [SerializeField] private string requiredKey; // The specific key required to activate this trigger
 
     void OnTriggerEnter(Collider other)
     {
-        if (requireKey && Managers.Inventory.equippedItem != "key")
+        if (!string.IsNullOrEmpty(requiredKey) && (Managers.Inventory.equippedItem == null || !Managers.Inventory.equippedItem.Equals(requiredKey)))
         {
             return;
         }
