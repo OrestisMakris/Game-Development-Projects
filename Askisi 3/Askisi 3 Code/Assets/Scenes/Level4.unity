@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 87045597}
   - component: {fileID: 87045596}
   - component: {fileID: 87045595}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 88614273}
   - component: {fileID: 88614272}
   - component: {fileID: 88614271}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,53 +1244,6 @@ MonoBehaviour:
   dPos: {x: 0, y: -2.9, z: 0}
   duration: 2
   doorSound: {fileID: 8300000, guid: fd90fb5a084ec9c4e86e4013861cc225, type: 3}
---- !u!1 &118566184
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 118566186}
-  - component: {fileID: 118566187}
-  m_Layer: 0
-  m_Name: Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &118566186
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118566184}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &118566187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118566184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bcc8b81ea05acb46a96e01347b7378d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalEnemyPrefab: {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
-  heavyEnemyPrefab: {fileID: 4892410892991233353, guid: 640c9a77a154c8b42bb75cc523b1701c, type: 3}
-  lightEnemyPrefab: {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
 --- !u!1 &119650257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +1997,7 @@ GameObject:
   - component: {fileID: 187961606}
   - component: {fileID: 187961605}
   - component: {fileID: 187961604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2102,7 @@ GameObject:
   - component: {fileID: 191793283}
   - component: {fileID: 191793282}
   - component: {fileID: 191793281}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Ramp '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2726,7 +2679,7 @@ GameObject:
   - component: {fileID: 279811307}
   - component: {fileID: 279811306}
   - component: {fileID: 279811305}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2965,7 +2918,7 @@ GameObject:
   - component: {fileID: 324679810}
   - component: {fileID: 324679809}
   - component: {fileID: 324679808}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3254,7 +3207,7 @@ GameObject:
   - component: {fileID: 345943940}
   - component: {fileID: 345943939}
   - component: {fileID: 345943938}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3464,7 +3417,7 @@ GameObject:
   - component: {fileID: 404396460}
   - component: {fileID: 404396459}
   - component: {fileID: 404396458}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3569,7 +3522,7 @@ GameObject:
   - component: {fileID: 420170728}
   - component: {fileID: 420170727}
   - component: {fileID: 420170726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3674,7 +3627,7 @@ GameObject:
   - component: {fileID: 436380816}
   - component: {fileID: 436380815}
   - component: {fileID: 436380814}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4156,7 +4109,7 @@ GameObject:
   - component: {fileID: 478347552}
   - component: {fileID: 478347551}
   - component: {fileID: 478347550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4402,7 +4355,7 @@ GameObject:
   - component: {fileID: 484481821}
   - component: {fileID: 484481820}
   - component: {fileID: 484481819}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4648,7 @@ GameObject:
   - component: {fileID: 503962456}
   - component: {fileID: 503962455}
   - component: {fileID: 503962454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5334,7 +5287,7 @@ GameObject:
   - component: {fileID: 556640652}
   - component: {fileID: 556640651}
   - component: {fileID: 556640650}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5439,7 +5392,7 @@ GameObject:
   - component: {fileID: 556724699}
   - component: {fileID: 556724698}
   - component: {fileID: 556724697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5823,7 +5776,7 @@ GameObject:
   - component: {fileID: 583691608}
   - component: {fileID: 583691607}
   - component: {fileID: 583691606}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5928,7 +5881,7 @@ GameObject:
   - component: {fileID: 587437464}
   - component: {fileID: 587437463}
   - component: {fileID: 587437462}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6033,7 +5986,7 @@ GameObject:
   - component: {fileID: 591624057}
   - component: {fileID: 591624056}
   - component: {fileID: 591624055}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6612,7 +6565,7 @@ GameObject:
   - component: {fileID: 668254080}
   - component: {fileID: 668254079}
   - component: {fileID: 668254078}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6717,7 +6670,7 @@ GameObject:
   - component: {fileID: 670097316}
   - component: {fileID: 670097315}
   - component: {fileID: 670097314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7535,7 +7488,7 @@ GameObject:
   - component: {fileID: 739968959}
   - component: {fileID: 739968958}
   - component: {fileID: 739968957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7640,7 +7593,7 @@ GameObject:
   - component: {fileID: 747690243}
   - component: {fileID: 747690242}
   - component: {fileID: 747690241}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7745,7 +7698,7 @@ GameObject:
   - component: {fileID: 749551680}
   - component: {fileID: 749551679}
   - component: {fileID: 749551678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8213,7 +8166,7 @@ GameObject:
   - component: {fileID: 833847612}
   - component: {fileID: 833847611}
   - component: {fileID: 833847610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8698,7 +8651,7 @@ GameObject:
   - component: {fileID: 932491155}
   - component: {fileID: 932491154}
   - component: {fileID: 932491153}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9119,7 +9072,7 @@ GameObject:
   - component: {fileID: 978890617}
   - component: {fileID: 978890616}
   - component: {fileID: 978890615}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9286,7 +9239,7 @@ GameObject:
   - component: {fileID: 1002055248}
   - component: {fileID: 1002055247}
   - component: {fileID: 1002055246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9791,6 +9744,7 @@ RectTransform:
   m_Children:
   - {fileID: 1694235249}
   - {fileID: 1962210543}
+  - {fileID: 2109120251}
   - {fileID: 37531505}
   - {fileID: 134573546}
   m_Father: {fileID: 0}
@@ -9813,6 +9767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthLabel: {fileID: 1962210544}
+  enemyCountLabel: {fileID: 2109120249}
   popup: {fileID: 1694235252}
   levelEnding: {fileID: 37531503}
 --- !u!1 &1025620883
@@ -9827,7 +9782,7 @@ GameObject:
   - component: {fileID: 1025620887}
   - component: {fileID: 1025620886}
   - component: {fileID: 1025620885}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10367,7 +10322,7 @@ GameObject:
   - component: {fileID: 1060546355}
   - component: {fileID: 1060546354}
   - component: {fileID: 1060546353}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10707,7 +10662,7 @@ GameObject:
   - component: {fileID: 1086770348}
   - component: {fileID: 1086770347}
   - component: {fileID: 1086770346}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12163,7 +12118,7 @@ GameObject:
   - component: {fileID: 1211077171}
   - component: {fileID: 1211077170}
   - component: {fileID: 1211077169}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12305,7 +12260,7 @@ GameObject:
   - component: {fileID: 1220335312}
   - component: {fileID: 1220335311}
   - component: {fileID: 1220335310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12486,7 +12441,7 @@ GameObject:
   - component: {fileID: 1245439038}
   - component: {fileID: 1245439037}
   - component: {fileID: 1245439036}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12614,7 +12569,7 @@ GameObject:
   - component: {fileID: 1254294596}
   - component: {fileID: 1254294595}
   - component: {fileID: 1254294594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12813,7 +12768,7 @@ GameObject:
   - component: {fileID: 1273252273}
   - component: {fileID: 1273252272}
   - component: {fileID: 1273252271}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14371,7 +14326,7 @@ GameObject:
   - component: {fileID: 1343755634}
   - component: {fileID: 1343755633}
   - component: {fileID: 1343755632}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14476,7 +14431,7 @@ GameObject:
   - component: {fileID: 1358843958}
   - component: {fileID: 1358843957}
   - component: {fileID: 1358843956}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14839,7 +14794,7 @@ GameObject:
   - component: {fileID: 1404647714}
   - component: {fileID: 1404647713}
   - component: {fileID: 1404647712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15152,7 +15107,7 @@ GameObject:
   - component: {fileID: 1464033857}
   - component: {fileID: 1464033856}
   - component: {fileID: 1464033855}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramp  (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15257,7 +15212,7 @@ GameObject:
   - component: {fileID: 1467730650}
   - component: {fileID: 1467730649}
   - component: {fileID: 1467730648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15495,7 +15450,7 @@ GameObject:
   - component: {fileID: 1497980563}
   - component: {fileID: 1497980562}
   - component: {fileID: 1497980561}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15600,7 +15555,7 @@ GameObject:
   - component: {fileID: 1498972239}
   - component: {fileID: 1498972238}
   - component: {fileID: 1498972237}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16135,7 +16090,7 @@ GameObject:
   - component: {fileID: 1592891875}
   - component: {fileID: 1592891874}
   - component: {fileID: 1592891873}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17586,7 +17541,7 @@ GameObject:
   - component: {fileID: 1703545741}
   - component: {fileID: 1703545740}
   - component: {fileID: 1703545739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17727,7 +17682,7 @@ GameObject:
   - component: {fileID: 1723092182}
   - component: {fileID: 1723092181}
   - component: {fileID: 1723092180}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18528,7 +18483,7 @@ GameObject:
   - component: {fileID: 1814970788}
   - component: {fileID: 1814970787}
   - component: {fileID: 1814970786}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19029,7 +18984,7 @@ GameObject:
   - component: {fileID: 1900122999}
   - component: {fileID: 1900122998}
   - component: {fileID: 1900122997}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19924,6 +19879,70 @@ Transform:
   - {fileID: 956492792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -179.509, z: 0}
+--- !u!1 &1995313736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995313738}
+  - component: {fileID: 1995313737}
+  m_Layer: 0
+  m_Name: Enemies Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1995313737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995313736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bc7268c91184b498d6c9961d8a35a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
+  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  - {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
+  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  - {fileID: 4892410892991233353, guid: 640c9a77a154c8b42bb75cc523b1701c, type: 3}
+  - {fileID: 4892410892991233353, guid: 1f4292b80cb84404190393f058ba5469, type: 3}
+  - {fileID: 4892410892991233353, guid: 05472731090ed1f41a87f012a30a8b9f, type: 3}
+  spawnPositions:
+  - {x: 17, y: 0.5, z: 2}
+  - {x: 18, y: 1, z: 21}
+  - {x: -17, y: 1, z: -21}
+  - {x: 2, y: 1, z: -48}
+  - {x: 16, y: 0.5, z: -80}
+  - {x: 52, y: 1, z: -93}
+  - {x: 34, y: 1.25, z: -58}
+  - {x: 4, y: 1, z: -64}
+  - {x: 7, y: 0.5, z: -14}
+--- !u!4 &1995313738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995313736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.8347266, y: 14.311064, z: -61.292866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001749006
 GameObject:
   m_ObjectHideFlags: 0
@@ -20574,7 +20593,7 @@ GameObject:
   - component: {fileID: 2053471745}
   - component: {fileID: 2053471744}
   - component: {fileID: 2053471743}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20906,7 +20925,7 @@ GameObject:
   - component: {fileID: 2083448730}
   - component: {fileID: 2083448729}
   - component: {fileID: 2083448728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Box (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21411,7 +21430,7 @@ GameObject:
   - component: {fileID: 2102862977}
   - component: {fileID: 2102862976}
   - component: {fileID: 2102862975}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21580,6 +21599,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106211395}
   m_CullTransparentMesh: 1
+--- !u!1 &2109120248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2109120251}
+  - component: {fileID: 2109120250}
+  - component: {fileID: 2109120249}
+  m_Layer: 5
+  m_Name: Enemies Killed text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2109120249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109120248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Enemies Killed:'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2109120250
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109120248}
+  m_CullTransparentMesh: 1
+--- !u!224 &2109120251
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109120248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1025480416}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -160.4, y: -50}
+  m_SizeDelta: {x: 320.7948, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126828222
 GameObject:
   m_ObjectHideFlags: 0
@@ -21726,7 +21879,7 @@ GameObject:
   - component: {fileID: 2128325668}
   - component: {fileID: 2128325667}
   - component: {fileID: 2128325666}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Outer Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21831,7 +21984,7 @@ GameObject:
   - component: {fileID: 2139789710}
   - component: {fileID: 2139789709}
   - component: {fileID: 2139789708}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Box (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22337,9 +22490,9 @@ SceneRoots:
   - {fileID: 1520541161}
   - {fileID: 1158699600}
   - {fileID: 1569550863}
-  - {fileID: 118566186}
   - {fileID: 1025480416}
   - {fileID: 1806457073}
   - {fileID: 4712879826762758260}
   - {fileID: 1677294858}
+  - {fileID: 1995313738}
   - {fileID: 2088601874}
