@@ -99,6 +99,30 @@ public class InventoryManager : MonoBehaviour, IGameManager
             equippedItem = null;
         }
     }
+    public void RemoveEnergyAndOres()
+    {
+        List<string> itemsToRemove = new List<string>();
+
+        foreach (var pair in items)
+        {
+            if (pair.Key.ToLower().Contains("energy") || pair.Key.ToLower().Contains("ore"))
+            {
+                itemsToRemove.Add(pair.Key);
+            }
+        }
+
+        foreach (string item in itemsToRemove)
+        {
+            items.Remove(item);
+        }
+
+        // Reset equipped item if it was energy or ore
+        if (equippedItem != null && 
+            (equippedItem.ToLower().Contains("energy") || equippedItem.ToLower().Contains("ore")))
+        {
+            equippedItem = null;
+        }
+    }
 
     public void ClearInventory()
     {

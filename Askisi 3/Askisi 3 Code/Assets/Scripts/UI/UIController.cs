@@ -83,6 +83,7 @@ public class UIController : MonoBehaviour
     private IEnumerator CompleteLevel()
     {
         Managers.Inventory.RemoveKeys();
+        Managers.Inventory.RemoveEnergyAndOres();
         levelEnding.gameObject.SetActive(true);
 
         if (Managers.Mission.curLevel < Managers.Mission.maxLevel)
