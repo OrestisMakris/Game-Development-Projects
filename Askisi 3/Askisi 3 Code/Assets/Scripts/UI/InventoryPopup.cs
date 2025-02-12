@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+
 public class InventoryPopup : MonoBehaviour
 {
     [SerializeField] Image[] itemIcons;
@@ -25,9 +26,21 @@ public class InventoryPopup : MonoBehaviour
                 itemLabels[i].gameObject.SetActive(true);
                 string item = itemList[i];
 
+                // Try to load the exact icon name first
                 Sprite sprite = Resources.Load<Sprite>($"Icons/{item}");
-                itemIcons[i].sprite = sprite;
-                itemIcons[i].SetNativeSize();
+                
+                // If no specific icon found and item contains "key", use default key icon
+                if (sprite == null && item.ToLower().Contains("key"))
+                {
+                    sprite = Resources.Load<Sprite>("Icons/key");
+                }
+
+                if (sprite != null)
+                {
+                    itemIcons[i].sprite = sprite;
+                    itemIcons[i].SetNativeSize();
+                }
+
                 int count = Managers.Inventory.GetItemCount(item);
                 string message = $"x{count}";
                 if (item == Managers.Inventory.equippedItem)
@@ -35,13 +48,19 @@ public class InventoryPopup : MonoBehaviour
                     message = "Equipped\n" + message;
                 }
                 itemLabels[i].text = message;
+
                 EventTrigger.Entry entry = new EventTrigger.Entry();
                 entry.eventID = EventTriggerType.PointerClick;
+                string itemCopy = item; // Create a copy for the lambda
                 entry.callback.AddListener((BaseEventData data) =>
                 {
-                    OnItem(item);
+                    OnItem(itemCopy);
                 });
                 EventTrigger trigger = itemIcons[i].GetComponent<EventTrigger>();
+                if (trigger == null)
+                {
+                    trigger = itemIcons[i].gameObject.AddComponent<EventTrigger>();
+                }
                 trigger.triggers.Clear();
                 trigger.triggers.Add(entry);
             }
@@ -51,10 +70,12 @@ public class InventoryPopup : MonoBehaviour
                 itemLabels[i].gameObject.SetActive(false);
             }
         }
+
         if (!itemList.Contains(curItem))
         {
             curItem = null;
         }
+
         if (curItem == null)
         {
             curItemLabel.gameObject.SetActive(false);
@@ -82,19 +103,17 @@ public class InventoryPopup : MonoBehaviour
         curItem = item;
         Refresh();
     }
+
     public void OnEquip()
     {
         Managers.Inventory.EquipItem(curItem);
         Refresh();
-
-
     }
 
     public void OnUse()
     {
         Managers.Inventory.ConsumeItem(curItem);
-        if
-   (curItem == "health")
+        if (curItem == "health")
         {
             Managers.Player.ChangeHealth(25);
         }
