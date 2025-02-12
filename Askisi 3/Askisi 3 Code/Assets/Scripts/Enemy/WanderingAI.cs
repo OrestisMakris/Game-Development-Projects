@@ -13,7 +13,8 @@ public class WanderingAI : MonoBehaviour
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;
 
-    //[SerializeField] LayerMask obstacleLayer;
+    private const float FIREBALL_COOLDOWN = 2.0f;
+    private float lastFireTime = -Mathf.Infinity;
 
     public bool IsTooClose // Property to access isTooClose
     {
@@ -58,11 +59,12 @@ public class WanderingAI : MonoBehaviour
 
                 if (shield != null || player != null)
                 {
-                    if (fireball == null)
+                    if (fireball == null && Time.time - lastFireTime >= FIREBALL_COOLDOWN)
                     {
                         fireball = Instantiate(fireballPrefab);
                         fireball.transform.position = transform.TransformPoint(Vector3.forward * 1.5f);
                         fireball.transform.rotation = transform.rotation;
+                        lastFireTime = Time.time;
                     }
                 }
                 if (hit.distance < obstacleRange)
