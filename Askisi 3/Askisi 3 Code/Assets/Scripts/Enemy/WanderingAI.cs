@@ -80,16 +80,4 @@ public class WanderingAI : MonoBehaviour
         isAlive = alive;
     }
 
-    // Detect collisions with walls using triggers
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log("Triggered with: " + other.gameObject.name);
-    //     // Check if the collided object is on the obstacleLayer
-    //     if (((1 << other.gameObject.layer) & obstacleLayer) != 0)
-    //     {
-    //         // Rotate away from the wall by a random angle between 135 and 225 degrees
-    //         float angle = Random.Range(135, 225);
-    //         transform.Rotate(0, angle, 0);
-    //     }
-    // }
 }
