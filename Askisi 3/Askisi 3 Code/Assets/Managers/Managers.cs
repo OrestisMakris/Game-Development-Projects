@@ -10,7 +10,7 @@ public class Managers : MonoBehaviour
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
     public static MissionManager Mission { get; private set; }
-    //public static EnemyManager Enemy { get; private set; }
+
     private List<IGameManager> startSequence;
     void Awake()
     {
@@ -19,13 +19,11 @@ public class Managers : MonoBehaviour
         Player = GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
         Mission = GetComponent<MissionManager>();
-        //Enemy = GetComponent<EnemyManager>();
 
         startSequence = new List<IGameManager>();
         startSequence.Add(Player);
         startSequence.Add(Inventory);
         startSequence.Add(Mission);
-        //startSequence.Add(Enemy);
 
         StartCoroutine(StartupManagers());
     }
