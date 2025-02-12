@@ -1,66 +1,89 @@
 using UnityEngine;
-using DG.Tweening; // Import DOTween namespace
+using DG.Tweening;
 
 public class DoorOpenDevice : MonoBehaviour
 {
     [SerializeField] private Vector3 dPos;
-    [SerializeField] private float duration = 2f; // Duration of the tween
-    [SerializeField] private AudioClip doorSound; // Door sound clip
-
+    [SerializeField] private float duration = 2f;
+    [SerializeField] private AudioClip doorSound;
+    
     private bool open;
+    private bool isMoving;
+    private Tween currentTween;
 
-    // Start is called before the first frame update
     private void Start()
     {
         // No local AudioSource; audio is now managed by AudioManager.
     }
 
-    // Operates the door based on its current state
     public void Operate()
     {
-        // Play door sound via AudioManager before operating
-        if(doorSound != null)
-        {
-            AudioManager.Instance.PlaySound(doorSound);
-        }
+        if (isMoving)
+            return;
 
+        if (doorSound != null)
+            AudioManager.Instance.PlaySound(doorSound);
+
+        currentTween?.Kill();
         Vector3 targetPos = open ? transform.position - dPos : transform.position + dPos;
-        transform.DOMove(targetPos, duration).OnComplete(() => open = !open);
+        isMoving = true;
+
+        currentTween = transform.DOMove(targetPos, duration)
+            .OnComplete(() =>
+            {
+                open = !open;
+                isMoving = false;
+                currentTween = null;
+            });
     }
 
-    // Activates the door to open position
     public void Activate()
     {
-        if (!open)
-        {
-            // Play door sound via AudioManager before activating
-            if(doorSound != null)
+        // Prevent activation if door is already open or moving
+        if (open || isMoving)
+            return;
+
+        if (doorSound != null)
+            AudioManager.Instance.PlaySound(doorSound);
+
+        currentTween?.Kill();
+        isMoving = true;
+        
+        currentTween = transform.DOMove(transform.position + dPos, duration)
+            .OnComplete(() =>
             {
-                AudioManager.Instance.PlaySound(doorSound);
-            }
-            
-            transform.DOMove(transform.position + dPos, duration).OnComplete(() => open = true);
-        }
+                open = true;
+                isMoving = false;
+                currentTween = null;
+            });
     }
 
-    // Deactivates the door to closed position
     public void Deactivate()
     {
-        if (open)
-        {
-            // Play door sound via AudioManager before deactivating
-            if(doorSound != null)
+        // Prevent deactivation if door is already closed or moving
+        if (!open || isMoving)
+            return;
+
+        if (doorSound != null)
+            AudioManager.Instance.PlaySound(doorSound);
+
+        currentTween?.Kill();
+        isMoving = true;
+
+        currentTween = transform.DOMove(transform.position - dPos, duration)
+            .OnComplete(() =>
             {
-                AudioManager.Instance.PlaySound(doorSound);
-            }
-            
-            transform.DOMove(transform.position - dPos, duration).OnComplete(() => open = false);
-        }
+                open = false;
+                isMoving = false;
+                currentTween = null;
+                // Optionally, auto-raise the door immediately after it goes down:
+                // Invoke("Activate", 0.1f);
+            });
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void OnDestroy()
     {
-        // Per-frame update logic if needed
+        // Clean up any running tween when object is destroyed
+        currentTween?.Kill();
     }
 }
