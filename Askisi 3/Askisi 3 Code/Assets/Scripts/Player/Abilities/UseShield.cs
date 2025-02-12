@@ -28,8 +28,6 @@ public class UseShield : MonoBehaviour
             {
                 currentShield.SetUseShield(this);
                 currentShield.SetShieldCooldownUI(shieldCooldownUI);
-                // currentShield.useShield = this;
-                // currentShield.shieldCooldownUI = shieldCooldownUI;
             }
         }
 
