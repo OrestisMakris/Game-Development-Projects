@@ -55,7 +55,10 @@ The goal of these exercises is to build hands-on experience with Unity, C#, Shad
 
 ### Exercise 1: Unity World Extension
 
-**PDF Instructions:** [`Exercise 2/ekfonisi.pdf`](Askisi%203/3η%20ασκηση%20εργαστηριου.pdf)  
+**PDF Instructions:** [Unity_Exercise_01.pdf](Askisi%201/Unity_Exercise_01.pdf)
+
+![Picture1](path/to/Picture1.png)
+![Picture2](path/to/Picture2.png)
 
 **Summary:**  
 - Create a simple 3D scene  
