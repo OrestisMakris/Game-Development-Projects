@@ -3,6 +3,7 @@
 **Course Website:** https://eclass.upatras.gr/courses/CEID1417/  
 **Instructor:** Prof. K. Tsichlas  
 **Authors:** Orestis Antonis Makris, Grigoris Delimpaltadakis
+
 **Grading**: Grade: 10  Top 1% (minimum passing grade 5)
 
 This repository contains the Unity exercises for the Game Development University Course (CEID_NE565), covering core Unity workflows, physics, and shader programming.
