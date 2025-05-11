@@ -91,7 +91,7 @@ Required tasks completed:
 **PDF Instructions:** [2η ασκηση εργαστηριου.pdf](Askisi%202/2η%20ασκηση%20εργαστηριου.pdf)
 
 **Images:**
-![ss](path/to/ss.png)
+![ss](Askisi%203/ss.png)
 
 **Summary**  
 - Developed a 2d Game
