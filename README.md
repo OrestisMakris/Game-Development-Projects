@@ -88,7 +88,10 @@ Required tasks completed:
 
 ### Exercise 2: 2D Platformer Extension
 
-**PDF Instructions:** [`Exercise 2/ekfonisi.pdf`](Askisi%203/3η%20ασκηση%20εργαστηριου.pdf)  
+**PDF Instructions:** [2η ασκηση εργαστηριου.pdf](Askisi%202/2η%20ασκηση%20εργαστηριου.pdf)
+
+**Images:**
+![ss](path/to/ss.png)
 
 **Summary**  
 - Developed a 2d Game
