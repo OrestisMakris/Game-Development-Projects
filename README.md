@@ -56,8 +56,8 @@ The goal of these exercises is to build hands-on experience with Unity, C#, Shad
 ### Exercise 1: Unity World Extension
 
 <div style="display: flex; gap: 10px;">
-  <img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture1.png" alt="Picture1" width="50%">
-  <img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture2.png" alt="Picture2" width="50%">
+  <img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture1.png" alt="Picture1" width="40%">
+  <img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture2.png" alt="Picture2" width="40%">
 </div>
 
 **PDF Instructions:** [Unity_Exercise_01.pdf](Askisi%201/Unity_Exercise_01.pdf)
