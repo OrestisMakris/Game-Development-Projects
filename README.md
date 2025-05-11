@@ -85,7 +85,7 @@ Required tasks completed:
 ---
 
 ### Exercise 2: 2D Platformer Extension
-<img src="Askisi%203/ss.png" alt="ss" width="50%">
+<img src="Askisi%203/ss.png" alt="ss" width="20%">
 **PDF Instructions:** [2η ασκηση εργαστηριου.pdf](Askisi%202/2η%20ασκηση%20εργαστηριου.pdf)
 
 **Summary**  
@@ -132,8 +132,8 @@ In this exercise we extended the 2D platformer from Lab 5:
 
 ### Exercise 3: Complete Game Project (Expanded)
 
-<img src="Askisi%203/image.png" alt="image" width="50%">
-<img src="Askisi%203/level4.png" alt="level4" width="50%">
+<img src="Askisi%203/image.png" alt="image" width="25%">
+<img src="Askisi%203/level4.png" alt="level4" width="25%">
 
 **PDF Instructions:** [`Exercise 3/ekfonisi.pdf`](Askisi%203/3η%20ασκηση%20εργαστηριου.pdf)  
 **Download Assets:** [Lab_10.rar](https://www.ceid.upatras.gr/webpages/faculty/ktsichlas/Unity/Lab_10.rar)  
