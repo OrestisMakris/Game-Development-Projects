@@ -54,8 +54,8 @@ The goal of these exercises is to build hands-on experience with Unity, C#, Shad
 ## Assignments
 
 ### Exercise 1: Unity World Extension
-<img src="Askisi%201/Picture1.png" alt="Picture1" width="50%">
-<img src="Askisi%201/Picture2.png" alt="Picture2" width="50%">
+<img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture1.png" alt="Picture1" width="50%">
+<img src="Askisi%201/%CE%A5%CF%80%CE%BF%CE%B2%CE%BF%CE%BB%CE%AE%20%CE%86%CF%83%CE%BA%CE%B7%CF%83%CE%B7%CF%82%201%20Unity%20%CE%94%CE%95%CE%9B%CE%97%CE%9C%CE%A0%CE%91%CE%9B%CE%A4%CE%91%CE%94%CE%91%CE%9A%CE%97%CE%A3%20%CE%9C%CE%91%CE%9A%CE%A1%CE%97%CE%A3/Picture2.png" alt="Picture2" width="50%">
 **PDF Instructions:** [Unity_Exercise_01.pdf](Askisi%201/Unity_Exercise_01.pdf)
 
 **Summary:**  
@@ -85,7 +85,7 @@ Required tasks completed:
 ---
 
 ### Exercise 2: 2D Platformer Extension
-<img src="Askisi%203/ss.png" alt="ss" width="20%">
+<img src="Askisi%203/ss.png" alt="ss" width="40%">
 **PDF Instructions:** [2η ασκηση εργαστηριου.pdf](Askisi%202/2η%20ασκηση%20εργαστηριου.pdf)
 
 **Summary**  
@@ -132,8 +132,8 @@ In this exercise we extended the 2D platformer from Lab 5:
 
 ### Exercise 3: Complete Game Project (Expanded)
 
-<img src="Askisi%203/image.png" alt="image" width="25%">
-<img src="Askisi%203/level4.png" alt="level4" width="25%">
+<img src="Askisi%203/image.png" alt="image" width="42%">
+<img src="Askisi%203/level4.png" alt="level4" width="42%">
 
 **PDF Instructions:** [`Exercise 3/ekfonisi.pdf`](Askisi%203/3η%20ασκηση%20εργαστηριου.pdf)  
 **Download Assets:** [Lab_10.rar](https://www.ceid.upatras.gr/webpages/faculty/ktsichlas/Unity/Lab_10.rar)  
